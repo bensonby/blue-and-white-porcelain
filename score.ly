@@ -87,12 +87,109 @@ guitarchords = \chordmode {
 }
 
 lyricsmain = \lyricmode {
+  素 胚 勾 勒 出 青 花 筆 鋒 濃 轉 淡
+  瓶 身 描 繪 的 牡 丹 一 如 妳 初 妝
+  冉 冉 檀 香 透 過 窗 心 事 我 了 然
+  宣 紙 上 走 筆 至 此 擱 一 半
+
+  釉 色 渲 染 仕 女 圖 韻 味 被 私 藏
+  而 妳 嫣 然 的 一 笑 如 含 苞 待 放
+  妳 的 美 一 縷 飄 散 去 到 我 去 不 了 的 地 方
+
+  天 青 色 等 煙 雨 而 我 在 等 妳
+  炊 煙 裊 裊 昇 起 隔 江 千 萬 里
+  在 瓶 底 書 漢 隸 仿 前 朝 的 飄 逸
+  就 當 我 為 遇 見 妳 伏 筆
+
+  天 青 色 等 煙 雨 而 我 在 等 妳
+  月 色 被 打 撈 起 暈 開 了 結 局
+  如 傳 世 的 青 花 瓷 自 顧 自 美 麗 妳 眼 帶 笑 意
+
+  色 白 花 青 的 錦 鯉 躍 然 於 碗 底
+  臨 摹 宋 體 落 款 時 卻 惦 記 著 妳
+  妳 隱 藏 在 窯 燒 裡 千 年 的 秘 密
+  極 細 膩 猶 如 繡 花 針 落 地
+
+  簾 外 芭 蕉 惹 驟 雨 門 環 惹 銅 綠
+  而 我 路 過 那 江 南 小 鎮 惹 了 妳
+  在 潑 墨 山 水 畫 裡  妳 從 墨 色 深 處 被 隱 去
+
+  天 青 色 等 煙 雨 而 我 在 等 妳
+  炊 煙 裊 裊 昇 起 隔 江 千 萬 里
+  在 瓶 底 書 漢 隸 仿 前 朝 的 飄 逸
+  就 當 我 為 遇 見 妳 伏 筆
+
+  天 青 色 等 煙 雨 而 我 在 等 妳
+  月 色 被 打 撈 起 暈 開 了 結 局
+  如 傳 世 的 青 花 瓷 自 顧 自 美 麗
+  妳 眼 帶 笑 意
+
+  天 青 色 等 煙 雨 而 我 在 等 妳
+  炊 煙 裊 裊 昇 起 隔 江 千 萬 里
+  在 瓶 底 書 漢 隸 仿 前 朝 的 飄 逸
+  就 當 我 為 遇 見 妳 伏 筆
+
+  天 青 色 等 煙 雨 而 我 在 等 妳
+  月 色 被 打 撈 起 暈 開 了 結 局
+  如 傳 世 的 青 花 瓷 自 顧 自 美 麗
+  妳 眼 帶 笑 意
+}
+
+melody-verse = \relative c' {
+  r16 d c a c8 c16 a c8 c16 a c a g8
+  r16 d' c a c8 c16 a c8 c16 e d c c8
+  r16 g a e' e8 e16 d e8 e16 d e g8 e16
+  r16 e e e d d d d d8 c16 e~( e d8.)
+  r16 d c a c8 c16 a c8 c16 a c a g8
+  r16 g a e' g8 g16 e g8 g16 e d c c8
+  r16 d c d e d d( c) d r c a d c c a c8 c16 c~ c4 r4 r4
+}
+
+melody-verse-two = \relative c' {
+  r16 d c a c8 c16 a c8 c16 a c a g8
+  r16 d' c a c8 c16 a c8 c16 e d c c8
+  r16 g a e' e8 e16 d d( e) e16 d e g8 e16
+  r16 e e e d d d d d8 c16 e~( e d8.)
+  r16 d c a c8 c16 a c8 c16 a c a g8
+  r16 g a e' g8 g16 e g8 g16 e d c c8
+  r16 d c d e d d( c) d r c a d c c a c8 c16 d~( d c8.) r4 r4
+}
+
+melody-chorus = \relative c'' {
+  r16 g16 g e d e a,8 d16 e g e d4
+  r16 g g e d e g,8 d'16 e g d c4
+  r16 c d e g a g e g e e d d4
+  r16 c d c d8 c16 d~ d16 e8 g16~ g e8.
+  r16 g16 g e d e a,8 d16 e g e d4
+  r16 g g e d e g,8 d'16 e g d c4
+  r16 c d e g a g e g e e d d8 r16
+  g,16 e'8 d16 d~ d c8.~ c4 r4
+}
+
+melody-chorus-two = \relative c'' {
+  r16 g16 g e d e a,8 d16 e g e d4
+  r16 g g e d e g,8 d'16 e g d c4
+  r16 c d e g a g e g e e d d4
+  r16 c d c d8 c16 d~ d16 e8 g16~ g e8.
+  r16 g16 g e d e a,8 d16 e g e~ e d8.
+  r16 g g e d e g,8 d'16 e g d~ d c8.
+  r16 c d e g a g e g e e d d8 r16
+  g,16 e'8 d16 d~ d c8.~ c4 r4
 }
 
 melody = \relative c' {
   \clef treble
   \time 4/4
-  \key f \major
+  \key c \major
+  \partial 2
+  r2 R1 R1 R1 r2 r4
+  \melody-verse
+  \melody-chorus
+  r4 R1 R1 R1 r2 r4
+  \melody-verse-two
+  \melody-chorus
+  \melody-chorus-two
+  r4 R1 R1 R1
   \bar "|."
 }
 
@@ -105,7 +202,7 @@ melody = \relative c' {
     % }
     \new Staff = "melodystaff" <<
       \set Staff.midiInstrument = #"electric guitar (clean)"
-      \set Staff.instrumentName = #"Voice"
+      \set Staff.instrumentName = #"Ocarina"
       \set Staff.midiMinimumVolume = #0.9
       \set Staff.midiMaximumVolume = #1
       \new Voice = "melody" {
@@ -149,7 +246,7 @@ melody = \relative c' {
     }
     <<
       \set Staff.midiInstrument = #"choir aahs"
-      \set Staff.instrumentName = #"Voice"
+      \set Staff.instrumentName = #"Ocarina"
       \new Voice = "melody" {
         \melody
       }
