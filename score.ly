@@ -1,4 +1,5 @@
 \version "2.18.2"
+\include "articulate.ly"
 #(set-global-staff-size 16)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -43,12 +44,52 @@ makeOctaves = #(define-music-function (parser location arg mus) (integer? ly:mus
   arranger = "Arranged by Benson"
 }
 
+upper-prelude = \relative c''' {
+  r8 r16 \acciaccatura gis a\( g e d e d c a8~ a8 d16 e d c g8~ g d'16 e d c a8 c16 d8 a16 e'4\)
+  \makeOctaves 1 { c16\( d e g g e e8 d c } <d fis d'>16 \makeOctaves 1 { c a8 c16 d e8 }
+  <g g'>2~\startTrillSpan\finger \markup \tied-lyric #"45-13" g'4\stopTrillSpan\) r4
+}
+upper-prelude-midi = \relative c''' {
+  r8 r16 a\( g e d e d\sustainOn c a8~ a8 d16 e
+  d\sustainOff\sustainOn c g8~ g d'16 e
+  d\sustainOff\sustainOn c a8 c16 d8 a16
+  e'4\)\sustainOff\sustainOn
+  \makeOctaves 1 { c16\( d e g g\sustainOff\sustainOn e e8 d c }
+  <d fis d'>16\sustainOff\sustainOn \makeOctaves 1 { c a8 c16 d e8 }
+  <g g'>2~\startTrillSpan\sustainOff\sustainOn g'4\stopTrillSpan\)
+  r4
+}
+
+lower-prelude = \relative c {
+  f16\sustainOn a-3 c-1 d-3 e-2 g-1 d-3 e-1
+  e,16\sustainOff\sustainOn g-3 c-1 d-3 e-2 g-1 d-3 e-1
+  d,16\sustainOff\sustainOn a'-2 c-1 e-3 f a e f-1
+  c,16\sustainOff\sustainOn g' c-1 d-3 e g d e-1
+  a,,16\sustainOff\sustainOn e' a b-2 c4-1
+  d,,16\sustainOff\sustainOn a' d e-3 fis4-2
+  g,16\sustainOff\sustainOn d'-2 f-1 a-3 c-2 f-1 a,-4 c-2
+  <g b d>2\sustainOff
+}
+
+lower-prelude-midi = \relative c {
+  f16\sustainOn a c d e g d e
+  e,32~\sustainOff e\sustainOn g16 c d e g d e
+  d,32~\sustainOff d\sustainOn a'16 c e f a e f
+  c,32~\sustainOff c\sustainOn g'16 c d e g d e
+  a,,32~\sustainOff a\sustainOn e'16 a b c4
+  d,,32~\sustainOff d\sustainOn a'16 d e fis4
+  g,32~\sustainOff g\sustainOn d'16 f a c f a, c
+  <g b d>2\sustainOff
+}
+
 upper-midi = \relative c' {
   \set Staff.pedalSustainStyle = #'bracket
   \clef treble
   \tempo 4 = 54
   \time 4/4
   \key c \major
+  \partial 2
+  \upper-prelude-midi
   \bar "|."
 }
 
@@ -57,6 +98,9 @@ lower-midi = \relative c {
   \clef bass
   \time 4/4
   \key c \major
+  \partial 2
+  r2
+  \lower-prelude-midi
   \bar "|."
 }
 
@@ -67,6 +111,8 @@ upper-print = \relative c' {
   \tempo 4 = 54
   \time 4/4
   \key c \major
+  \partial 2
+  \upper-prelude
   \bar "|."
 }
 
@@ -75,6 +121,9 @@ lower-print = \relative c {
   \clef bass
   \time 4/4
   \key c \major
+  \partial 2
+  r2
+  \lower-prelude
   \bar "|."
 }
 
@@ -214,13 +263,13 @@ melody = \relative c' {
       \set Staff.midiInstrument = #"acoustic grand"
       \set Staff.instrumentName = #"Piano"
       \new Staff = "right" {
-        \set Staff.midiMinimumVolume = #0.1
-        \set Staff.midiMaximumVolume = #0.4
-        \upper-midi
+        \set Staff.midiMinimumVolume = #0.6
+        \set Staff.midiMaximumVolume = #0.7
+        \articulate \upper-midi
       }
       \new Staff = "left" {
-        \set Staff.midiMinimumVolume = #0.1
-        \set Staff.midiMaximumVolume = #0.4
+        \set Staff.midiMinimumVolume = #0.6
+        \set Staff.midiMaximumVolume = #0.7
         \lower-midi
       }
     >>
