@@ -373,6 +373,7 @@ melody = \relative c' {
 }
 }
 \book {
+\bookOutputSuffix "c-major"
 \score {
   <<
     % \new ChordNames {
@@ -398,6 +399,59 @@ melody = \relative c' {
       \new Staff = "right" { \upper-print }
       \new Dynamics = "Dynamics_pf" \dynamics
       \new Staff = "left" { \lower-print }
+    >>
+  >>
+  \layout {
+    \context {
+      % add the RemoveEmptyStaffContext that erases rest-only staves
+      \Staff \RemoveEmptyStaves
+    }
+    \context {
+      % add the RemoveEmptyStaffContext that erases rest-only staves
+      \Dynamics \RemoveEmptyStaves
+    }
+    \context {
+      \Score
+      % Remove all-rest staves also in the first system
+      \override VerticalAxisGroup.remove-first = ##t
+      % If only one non-empty staff in a system exists, still print the starting bar
+      \override SystemStartBar.collapse-height = #1
+    }
+    \context {
+      \ChordNames
+      \override ChordName #'font-size = #-3
+    }
+  }
+}
+}
+
+\book {
+\bookOutputSuffix "a-major"
+\score {
+  <<
+    % \new ChordNames {
+      % \set chordChanges = ##t
+      % \guitarchords
+    % }
+    \new Staff = "melodystaff" \with {
+      fontSize = #-3
+      \override StaffSymbol.staff-space = #(magstep -3)
+      \override StaffSymbol.thickness = #(magstep -3)
+    }
+    <<
+      \set Staff.midiInstrument = #"choir aahs"
+      \set Staff.instrumentName = #"Ocarina"
+      \new Voice = "melody" {
+        \transpose c a, { \melody }
+      }
+      \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
+    >>
+    \new PianoStaff <<
+      \set Staff.midiInstrument = #"acoustic grand"
+      \set Staff.instrumentName = #"Piano"
+      \new Staff = "right" { \transpose c a, { \upper-print }}
+      \new Dynamics = "Dynamics_pf" \dynamics
+      \new Staff = "left" { \transpose c a, { \lower-print }}
     >>
   >>
   \layout {
