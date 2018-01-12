@@ -45,12 +45,12 @@ makeOctaves = #(define-music-function (parser location arg mus) (integer? ly:mus
 }
 
 upper-prelude = \relative c''' {
-  r8 r16 \acciaccatura g a\( g e d e d c a8~ a8 d16 e d c g8~ g d'16 e d c a8 c16 d8 a16 e'4\)
+  s16 \acciaccatura g a\( g e d e d c a8~ a8 d16 e d c g8~ g d'16 e d c a8 c16 d8 a16 e'4\)
   \makeOctaves 1 { c16\( d e g g e e8 d c } <d fis d'>16 \makeOctaves 1 { c a8 c16 d e8 }
   <g g'>2~\startTrillSpan\finger \markup \tied-lyric #"45-13" g'4\stopTrillSpan\) r4
 }
 upper-prelude-midi = \relative c''' {
-  r8 r16 \acciaccatura g a\( g e d e d\sustainOn c a8~ a8 d16 e
+  s16 \acciaccatura g a\( g e d e d\sustainOn c a8~ a8 d16 e
   d\sustainOff\sustainOn c g8~ g d'16 e
   d\sustainOff\sustainOn c a8 c16 d8 a16
   e'4\)\sustainOff\sustainOn
@@ -61,6 +61,7 @@ upper-prelude-midi = \relative c''' {
 }
 
 lower-prelude = \relative c {
+  s16 r16 r4
   f16\sustainOn a-3 c-1 d-3 e-2 g-1 d-3 e-1
   e,16\sustainOff\sustainOn g-3 c-1 d-3 e-2 g-1 d-3 e-1
   d,16\sustainOff\sustainOn a'-2 c-1 e-3 f a e f-1
@@ -72,6 +73,7 @@ lower-prelude = \relative c {
 }
 
 lower-prelude-midi = \relative c {
+  s16 r16 r4
   f16\sustainOn a c d e g d e
   e,32~\sustainOff e\sustainOn g16 c d e g d e
   d,32~\sustainOff d\sustainOn a'16 c e f a e f
@@ -88,7 +90,7 @@ upper-midi = \relative c' {
   \tempo 4 = 54
   \time 4/4
   \key c \major
-  \partial 2
+  \partial 16*6
   \upper-prelude-midi
   \bar "|."
 }
@@ -98,8 +100,7 @@ lower-midi = \relative c {
   \clef bass
   \time 4/4
   \key c \major
-  \partial 2
-  r2
+  \partial 16*6
   \lower-prelude-midi
   \bar "|."
 }
@@ -111,7 +112,7 @@ upper-print = \relative c' {
   \tempo 4 = 54
   \time 4/4
   \key c \major
-  \partial 2
+  \partial 16*6
   \upper-prelude
   \bar "|."
 }
@@ -121,8 +122,7 @@ lower-print = \relative c {
   \clef bass
   \time 4/4
   \key c \major
-  \partial 2
-  r2
+  \partial 16*6
   \lower-prelude
   \bar "|."
 }
@@ -230,8 +230,8 @@ melody = \relative c' {
   \clef treble
   \time 4/4
   \key c \major
-  \partial 2
-  r2 R1 R1 R1 r2 r4
+  \partial 16*6
+  s16 r16 r4 R1 R1 R1 r2 r4
   \melody-verse
   \melody-chorus
   r4 R1 R1 R1 r2 r4
