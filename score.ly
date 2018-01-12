@@ -69,7 +69,7 @@ lower-prelude = \relative c {
   a,,16\sustainOff\sustainOn e' g a c4
   d,,16\sustainOff\sustainOn a' c d fis4
   g,16\sustainOff\sustainOn d'-2 f-1 a-3 c-2 f-1 a,-4 c-2
-  <g b d>2\sustainOff
+  <g b d>2\sustainOff\sustainOn
 }
 
 lower-prelude-midi = \relative c {
@@ -81,7 +81,94 @@ lower-prelude-midi = \relative c {
   a,,32~\sustainOff a\sustainOn e'16 g a c4
   d,,32~\sustainOff d\sustainOn a'16 c d fis4
   g,32~\sustainOff g\sustainOn d'16 f a c f a, c
-  <g b d>2\sustainOff
+  <g b d>2\sustainOff\sustainOn
+}
+
+upper-verse-one = \relative c' {
+  s1 s1 s1 s2 <b d g>4\arpeggio g''
+  s1 s1 s1 s2 <f g,>8 e <d g,> c
+}
+
+lower-verse-one = \relative c {
+  << {
+    \change Staff = "left" c16\sustainOn g'
+    \change Staff = "right" c16 g'~ g4
+    \change Staff = "left" c,,16\sustainOff\sustainOn g'
+    \change Staff = "right" d'16 g~ g d c d
+    \change Staff = "left" a,16\sustainOff\sustainOn g'
+    \change Staff = "right" c16 g'~ g4
+    \change Staff = "left" a,,16\sustainOff\sustainOn
+    \change Staff = "right" c'16 d g~ g d c d
+    \change Staff = "left" f,,16\sustainOff\sustainOn
+    \change Staff = "right" c''16 e g~ g4
+    \change Staff = "left" f,,16\sustainOff\sustainOn
+    \change Staff = "right" c''16 e g~ g e d e
+    \change Staff = "left" d,16\sustainOff\sustainOn g
+    \change Staff = "right" c16 g'~ g8 c,
+  } \\ {
+    c,2 c2 a2 a f f d'
+  } >>
+  g,2\sustainOff\sustainOn
+  << {
+    \change Staff = "left" c16\sustainOff\sustainOn g'
+    \change Staff = "right" c16 g'~ g8 d
+    \change Staff = "left" c,16\sustainOff\sustainOn g'
+    \change Staff = "right" d'16 g~ g d c d
+    \change Staff = "left" e,16\sustainOff\sustainOn
+    \change Staff = "right" b'16 d g~ g8 b,
+    \change Staff = "left" a,16\sustainOff\sustainOn e'
+    \change Staff = "right" a16 c~ c e c g
+    \change Staff = "left" f16\sustainOff\sustainOn
+    \change Staff = "right" c'16 e g~ g8 f
+    \change Staff = "left" d,16\sustainOff\sustainOn g
+    \change Staff = "right" c16 d~ d8 g
+    \change Staff = "left" c,,16\sustainOff\sustainOn g'
+    \change Staff = "right" c16 d~ d4
+  } \\ {
+    c,2 c e a, f' d c4. c8
+  } >>
+  g4\sustainOff\sustainOn e'
+}
+
+lower-verse-one-midi = \relative c {
+  << {
+    \change Staff = "left" c16\sustainOn g'
+    \change Staff = "right" c16 g'~ g4
+    \change Staff = "left" c,,32~\sustainOff c\sustainOn g'16
+    \change Staff = "right" d'16 g~ g d c d
+    \change Staff = "left" a,32~\sustainOff a\sustainOn g'16
+    \change Staff = "right" c16 g'~ g4
+    \change Staff = "left" a,,32~\sustainOff a\sustainOn
+    \change Staff = "right" c'16 d g~ g d c d
+    \change Staff = "left" f,,32~\sustainOff f\sustainOn
+    \change Staff = "right" c''16 e g~ g4
+    \change Staff = "left" f,,32~\sustainOff f\sustainOn
+    \change Staff = "right" c''16 e g~ g e d e
+    \change Staff = "left" d,32~\sustainOff d\sustainOn g16
+    \change Staff = "right" c16 g'~ g8 c,
+  } \\ {
+    c,2 c2 a2 a f f d'
+  } >>
+  g,16~\sustainOff g8.~\sustainOn g4
+  << {
+    \change Staff = "left" c32~\sustainOff c\sustainOn g'16
+    \change Staff = "right" c16 g'~ g8 d
+    \change Staff = "left" c,32~\sustainOff c\sustainOn g'16
+    \change Staff = "right" d'16 g~ g d c d
+    \change Staff = "left" e,32~\sustainOff e\sustainOn
+    \change Staff = "right" b'16 d g~ g8 b,
+    \change Staff = "left" a,32~\sustainOff a\sustainOn e'16
+    \change Staff = "right" a16 c~ c e c g
+    \change Staff = "left" f32~\sustainOff f\sustainOn
+    \change Staff = "right" c'16 e g~ g8 f
+    \change Staff = "left" d,32~\sustainOff d\sustainOn g16
+    \change Staff = "right" c16 d~ d8 g
+    \change Staff = "left" c,,32~\sustainOff c\sustainOn g'16
+    \change Staff = "right" c16 d~ d4
+  } \\ {
+    c,2 c e a, f' d c4. c8
+  } >>
+  g16~\sustainOff g8.~\sustainOn e'
 }
 
 upper-midi = \relative c' {
@@ -92,6 +179,7 @@ upper-midi = \relative c' {
   \key c \major
   \partial 16*6
   \upper-prelude-midi
+  \upper-verse-one
   \bar "|."
 }
 
@@ -102,6 +190,7 @@ lower-midi = \relative c {
   \key c \major
   \partial 16*6
   \lower-prelude-midi
+  \lower-verse-one-midi
   \bar "|."
 }
 
@@ -114,6 +203,7 @@ upper-print = \relative c' {
   \key c \major
   \partial 16*6
   \upper-prelude
+  \upper-verse-one
   \bar "|."
 }
 
@@ -124,6 +214,7 @@ lower-print = \relative c {
   \key c \major
   \partial 16*6
   \lower-prelude
+  \lower-verse-one
   \bar "|."
 }
 
@@ -184,7 +275,7 @@ lyricsmain = \lyricmode {
   妳 眼 帶 笑 意
 }
 
-melody-verse = \relative c' {
+melody-verse = \relative c'' {
   r16 d c a c8 c16 a c8 c16 a c a g8
   r16 d' c a c8 c16 a c8 c16 e d c c8
   r16 g a e' e8 e16 d e8 e16 d e g8 e16
@@ -194,7 +285,7 @@ melody-verse = \relative c' {
   r16 d c d e d d( c) d r c a d c c a c8 c16 c~ c4 r4 r4
 }
 
-melody-verse-two = \relative c' {
+melody-verse-two = \relative c'' {
   r16 d c a c8 c16 a c8 c16 a c a g8
   r16 d' c a c8 c16 a c8 c16 e d c c8
   r16 g a e' e8 e16 d d( e) e16 d e g8 e16
@@ -204,7 +295,7 @@ melody-verse-two = \relative c' {
   r16 d c d e d d( c) d r c a d c c a c8 c16 d~( d c8.) r4 r4
 }
 
-melody-chorus = \relative c'' {
+melody-chorus = \relative c''' {
   r16 g16 g e d e a,8 d16 e g e d4
   r16 g g e d e g,8 d'16 e g d c4
   r16 c d e g a g e g e e d d4
@@ -215,7 +306,7 @@ melody-chorus = \relative c'' {
   g,16 e'8 d16 d~ d c8.~ c4 r4
 }
 
-melody-chorus-two = \relative c'' {
+melody-chorus-two = \relative c''' {
   r16 g16 g e d e a,8 d16 e g e d4
   r16 g g e d e g,8 d'16 e g d c4
   r16 c d e g a g e g e e d d4
