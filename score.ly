@@ -45,12 +45,12 @@ makeOctaves = #(define-music-function (parser location arg mus) (integer? ly:mus
 }
 
 upper-prelude = \relative c''' {
-  r8 r16 \acciaccatura gis a\( g e d e d c a8~ a8 d16 e d c g8~ g d'16 e d c a8 c16 d8 a16 e'4\)
+  r8 r16 \acciaccatura g a\( g e d e d c a8~ a8 d16 e d c g8~ g d'16 e d c a8 c16 d8 a16 e'4\)
   \makeOctaves 1 { c16\( d e g g e e8 d c } <d fis d'>16 \makeOctaves 1 { c a8 c16 d e8 }
   <g g'>2~\startTrillSpan\finger \markup \tied-lyric #"45-13" g'4\stopTrillSpan\) r4
 }
 upper-prelude-midi = \relative c''' {
-  r8 r16 a\( g e d e d\sustainOn c a8~ a8 d16 e
+  r8 r16 \acciaccatura g a\( g e d e d\sustainOn c a8~ a8 d16 e
   d\sustainOff\sustainOn c g8~ g d'16 e
   d\sustainOff\sustainOn c a8 c16 d8 a16
   e'4\)\sustainOff\sustainOn
@@ -65,8 +65,8 @@ lower-prelude = \relative c {
   e,16\sustainOff\sustainOn g-3 c-1 d-3 e-2 g-1 d-3 e-1
   d,16\sustainOff\sustainOn a'-2 c-1 e-3 f a e f-1
   c,16\sustainOff\sustainOn g' c-1 d-3 e g d e-1
-  a,,16\sustainOff\sustainOn e' a b-2 c4-1
-  d,,16\sustainOff\sustainOn a' d e-3 fis4-2
+  a,,16\sustainOff\sustainOn e' g a c4
+  d,,16\sustainOff\sustainOn a' c d fis4
   g,16\sustainOff\sustainOn d'-2 f-1 a-3 c-2 f-1 a,-4 c-2
   <g b d>2\sustainOff
 }
@@ -76,8 +76,8 @@ lower-prelude-midi = \relative c {
   e,32~\sustainOff e\sustainOn g16 c d e g d e
   d,32~\sustainOff d\sustainOn a'16 c e f a e f
   c,32~\sustainOff c\sustainOn g'16 c d e g d e
-  a,,32~\sustainOff a\sustainOn e'16 a b c4
-  d,,32~\sustainOff d\sustainOn a'16 d e fis4
+  a,,32~\sustainOff a\sustainOn e'16 g a c4
+  d,,32~\sustainOff d\sustainOn a'16 c d fis4
   g,32~\sustainOff g\sustainOn d'16 f a c f a, c
   <g b d>2\sustainOff
 }
