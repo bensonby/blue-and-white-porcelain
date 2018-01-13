@@ -1,6 +1,6 @@
 \version "2.18.2"
 \include "articulate.ly"
-#(set-global-staff-size 16)
+#(set-global-staff-size 15)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  http://lsr.di.unimi.it/LSR/Item?id=445
