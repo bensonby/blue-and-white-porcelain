@@ -691,6 +691,37 @@ melody-original-key = \relative c' {
   }
 }
 }
+
+\book {
+\bookOutputSuffix "c-major-no-vocal"
+\score {
+  <<
+    % \new ChordNames {
+      % \guitarchords
+    % }
+    \new PianoStaff <<
+      \new Staff = "right" {
+        \set Staff.midiInstrument = #"acoustic grand"
+        \set Staff.midiMinimumVolume = #0.6
+        \set Staff.midiMaximumVolume = #0.7
+        \articulate << \upper-c-major \pedals >>
+      }
+      \new Staff = "left" {
+        \set Staff.midiInstrument = #"acoustic grand"
+        \set Staff.midiMinimumVolume = #0.6
+        \set Staff.midiMaximumVolume = #0.7
+        \articulate << \lower-c-major \pedals >>
+      }
+    >>
+  >>
+  \midi {
+    \context {
+      \ChordNameVoice \remove Note_performer
+    }
+  }
+}
+}
+
 \book {
 \bookOutputSuffix "c-major"
 \score {
