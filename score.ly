@@ -207,11 +207,12 @@ lower-episode = \relative c {
     \stemDown
     f c e-2 f-1 \cl
     \stemUp
-    d,16 a'-5 c-3 e-2
+    d,16 \clef treble a'-5 c-3 e-2
     \stemNeutral
     f-1
     \set fingeringOrientations = #'(left)
     <c'\finger \rhMark> e, f
+    \clef bass
     \stemUp
     g,, d' g c g'8\noBeam e16[( g d2])
   } \\ {
