@@ -40,7 +40,7 @@ makeOctaves = #(define-music-function (parser location arg mus) (integer? ly:mus
 
 \header {
   title = "周杰倫 - 青花瓷"
-  subtitle = "For ocarina and piano accompaniment"
+  subtitle = "For soloist and piano accompaniment"
   arranger = "Arranged by Benson"
 }
 
@@ -86,7 +86,7 @@ lower-prelude-midi = \relative c {
 
 upper-verse-one = \relative c' {
   s1 s1 s1 s2 <b d g>4\arpeggio g''
-  s1 s1 s1 s2 <f g,>8 e <d g,> c
+  s1 s1 s1 s2
 }
 
 lower-verse-one = \relative c {
@@ -127,7 +127,6 @@ lower-verse-one = \relative c {
   } \\ {
     c,2 c e a, f' d c4. c8
   } >>
-  g4\sustainOff\sustainOn e'
 }
 
 lower-verse-one-midi = \relative c {
@@ -168,6 +167,40 @@ lower-verse-one-midi = \relative c {
   } \\ {
     c,2 c e a, f' d c4. c8
   } >>
+}
+
+upper-chorus-one = \relative c'' {
+  <f g,>8\( e <d g,> c
+  a4.\)\( e'8 d4.\) d16\( e
+  g,4. d'8 c2\)
+  d4.\( c8 d2\)
+  << { e2 } \\ {
+    r16 g,\( a c d c d e
+    \stemNeutral
+    <f g,>8 e <d g,> c
+    a4.\)\( e'8 d4.\)
+  } >>
+  d16\( e
+  g4. a8 c,4~ c16\) c\( d e
+  g8 e d c d4. c8 c2\)
+}
+lower-chorus-one = \relative c {
+  g4\sustainOff\sustainOn e'\sustainOff\sustainOn
+  << {
+    f16\sustainOff\sustainOn c' f a~ a4
+    f,16\sustainOff\sustainOn d' g b~ b4
+    e,,16\sustainOff\sustainOn b' d g~ g4
+    a,,16\sustainOff\sustainOn e' a c~ c4
+    d,16\sustainOff\sustainOn a' c e~ e4
+    g,,16\sustainOff\sustainOn a' d f~ f4
+  } \\ {
+    f,2 f
+    e4. e16 b a2
+    d4. a8 g2
+  } >>
+  c2\sustainOff\sustainOn c,8\sustainOff\sustainOn c'16 d e4\sustainOff\sustainOn
+}
+lower-chorus-one-midi = \relative c {
   g16~\sustainOff g8.~\sustainOn e'
 }
 
@@ -180,6 +213,7 @@ upper-midi = \relative c' {
   \partial 16*6
   \upper-prelude-midi
   \upper-verse-one
+  \upper-chorus-one
   \bar "|."
 }
 
@@ -191,6 +225,8 @@ lower-midi = \relative c {
   \partial 16*6
   \lower-prelude-midi
   \lower-verse-one-midi
+  % \lower-chorus-one-midi
+  \lower-chorus-one
   \bar "|."
 }
 
@@ -204,6 +240,7 @@ upper-print = \relative c' {
   \partial 16*6
   \upper-prelude
   \upper-verse-one
+  \upper-chorus-one
   \bar "|."
 }
 
@@ -215,6 +252,7 @@ lower-print = \relative c {
   \partial 16*6
   \lower-prelude
   \lower-verse-one
+  \lower-chorus-one
   \bar "|."
 }
 
