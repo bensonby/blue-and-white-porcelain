@@ -39,6 +39,9 @@ makeOctaves = #(define-music-function (parser location arg mus) (integer? ly:mus
 
 cr = \change Staff = "right"
 cl = \change Staff = "left"
+rhMark = \markup { 
+  \path #0.1 #'((moveto -1 0)(rlineto 0 -1.5)(rlineto 0.5 0))
+}
 
 \header {
   title = "周杰倫 - 青花瓷"
@@ -173,6 +176,51 @@ lower-chorus-one = \relative c {
   c4.
 }
 
+upper-episode = \relative c'' {
+  e16\( g a4. \stemUp g16 e \stemNeutral d4.\)
+  \stemUp c16\(-3 d-1 \stemNeutral g4.-5 \stemUp g16 d c4.\)
+  \stemUp c16\(-3 d-4 e8 d-4 c-5 a-4 \stemNeutral c\finger "5 - 1" d e a
+  g2~\)\startTrillSpan g4\stopTrillSpan r4
+}
+
+lower-episode = \relative c {
+  r8
+  << {
+    \stemUp
+    f16 a c d
+    \stemNeutral
+    \cr g-2 a-1 \cl a, c
+    \stemUp
+    f,16 aes c d
+    \stemNeutral
+    \cr g-1 aes-2 \cl c, d
+    \stemUp
+    e,16 g c d
+    \stemNeutral
+    \cr g c \cl c, d
+    \stemUp
+    ees,16 fis c' ees
+    \stemDown
+    \cr fis-1 a-2 fis a \cl
+    \stemNeutral
+    d,,16 a' c \cr e
+    \stemDown
+    f c e-2 f-1 \cl
+    \stemUp
+    d,16 a'-5 c-3 e-2
+    \stemNeutral
+    f-1
+    \set fingeringOrientations = #'(left)
+    <c'\finger \rhMark> e, f
+    \stemUp
+    g,, d' g c g'8\noBeam e16[( g d2])
+  } \\ {
+    f,2 f4. c16 d e4. e8 ees2
+    d4. a8 d,2 g
+    <g' b>2
+  } >>
+}
+
 pedals = {
   s8 s4
   s2\sustainOn
@@ -181,6 +229,15 @@ pedals = {
   \repeat unfold 7 { s2\sustainOff\sustainOn }
   \repeat unfold 2 { s4\sustainOff\sustainOn }
   \repeat unfold 8 { s2\sustainOff\sustainOn }
+  % episode
+  s2\sustainOff\sustainOn
+  s4.\sustainOff\sustainOn
+  s16
+  s16\sustainOff\sustainOn
+  s4.\sustainOff\sustainOn
+  s8\sustainOff\sustainOn
+  s2\sustainOff\sustainOn
+  \repeat unfold 4 { s2\sustainOff\sustainOn }
 }
 
 upper-print = \relative c' {
@@ -193,6 +250,7 @@ upper-print = \relative c' {
   \upper-prelude
   \upper-verse-one
   \upper-chorus-one
+  \upper-episode
   \bar "|."
 }
 
@@ -204,6 +262,7 @@ lower-print = \relative c {
   \lower-prelude
   \lower-verse-one
   \lower-chorus-one
+  \lower-episode
   \bar "|."
 }
 
