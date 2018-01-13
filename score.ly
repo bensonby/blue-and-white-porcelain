@@ -306,8 +306,8 @@ lower-verse-two = \relative c {
 
 upper-chorus-last-and-outro = \relative c' {
   f32\( bes c d f d bes g c16\)
-  % r4 r16
   g'16\( g e
+  \key c \major
   a4. \stemUp e8 \stemNeutral d4.\) \stemUp e8\(
   g,4. d'8 \stemNeutral c4~ c16\)
   c\( d e g16 a g e g e e d d4~ \stemUp d16\) c\( d c
@@ -338,6 +338,7 @@ lower-chorus-end-two = \relative c' {
   } >>
 }
 lower-chorus-last = \relative c {
+  \key c \major
   << {
     \stemNeutral
     f16 c' f \cr a~ \stemDown a4
@@ -433,7 +434,7 @@ pedals = {
   s2.\sustainOff\sustainOn s4\sustainOff
 }
 
-upper-print = \relative c' {
+upper-c-major = \relative c' {
   \set fingeringOrientations = #'(up)
   \clef treble
   \tempo 4 = 54
@@ -451,7 +452,7 @@ upper-print = \relative c' {
   \bar "|."
 }
 
-lower-print = \relative c {
+lower-c-major = \relative c {
   \clef bass
   \time 4/4
   \key c \major
@@ -467,6 +468,51 @@ lower-print = \relative c {
   \lower-chorus-one
   \lower-chorus-end-two
   \lower-chorus-last
+  \bar "|."
+}
+
+upper-original-key = \relative c' {
+  \set fingeringOrientations = #'(up)
+  \clef treble
+  \tempo 4 = 54
+  \time 4/4
+  \key a \major
+  \partial 16*6
+  \transpose c a, {
+    \upper-prelude
+    \upper-verse-one
+    \upper-chorus-one
+    \upper-chorus-end-one
+    \upper-episode
+    \upper-verse-two
+    \upper-chorus-two
+  }
+  \transpose c bes, {
+    \upper-chorus-last-and-outro
+  }
+  \bar "|."
+}
+
+lower-original-key = \relative c {
+  \clef bass
+  \time 4/4
+  \key a \major
+  \partial 16*6
+  \transpose c a, {
+    \lower-prelude
+    \lower-verse-one
+    \lower-chorus-start
+    \lower-chorus-one
+    \lower-chorus-end-one
+    \lower-episode
+    \lower-verse-two
+    \lower-chorus-start
+    \lower-chorus-one
+  }
+  \transpose c bes, {
+    \lower-chorus-end-two
+    \lower-chorus-last
+  }
   \bar "|."
 }
 
@@ -559,7 +605,9 @@ melody-chorus = \relative c''' {
 }
 
 melody-chorus-two = \relative c''' {
-  r16 g16 g e d e a,8 d16 e g e d4
+  r16 g16 g e
+  \key c \major
+  d e a,8 d16 e g e d4
   r16 g g e d e g,8 d'16 e g d c4
   r16 c d e g a g e g e e d d4
   r16 c d c d8 c16 d~ d16 e8 g16~ g e8.
@@ -585,6 +633,25 @@ melody = \relative c' {
   \bar "|."
 }
 
+melody-original-key = \relative c' {
+  \clef treble
+  \time 4/4
+  \key a \major
+  \partial 16*6
+  s16 r16 r4 R1 R1 R1 r2 r4
+  \transpose c a, {
+    \melody-verse
+    \melody-chorus
+    r4 R1 R1 R1 r2 r4
+    \melody-verse-two
+    \melody-chorus
+  }
+  \transpose c bes, {
+  \melody-chorus-two
+  }
+  R1 R1 R1
+  \bar "|."
+}
 
 \book {
 \score {
@@ -607,13 +674,13 @@ melody = \relative c' {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \upper-print \pedals >>
+        \articulate << \upper-c-major \pedals >>
       }
       \new Staff = "left" {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \lower-print \pedals >>
+        \articulate << \lower-c-major \pedals >>
       }
     >>
   >>
@@ -646,9 +713,9 @@ melody = \relative c' {
     >>
     \new PianoStaff <<
       \set Staff.instrumentName = #"Piano"
-      \new Staff = "right" { \upper-print }
+      \new Staff = "right" { \upper-c-major }
       % \new Dynamics = "Dynamics_pf" \dynamics
-      \new Staff = "left" { \lower-print }
+      \new Staff = "left" { \lower-c-major }
     >>
     \new Staff <<
       % TODO: pedal sustain style bracket not working
@@ -682,7 +749,7 @@ melody = \relative c' {
 }
 
 \book {
-\bookOutputSuffix "a-major"
+\bookOutputSuffix "original-key"
 \score {
   <<
     % \new ChordNames {
@@ -697,15 +764,15 @@ melody = \relative c' {
     <<
       \set Staff.instrumentName = #"Solo"
       \new Voice = "melody" {
-        \transpose c a, { \melody }
+        \melody-original-key
       }
       \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
     >>
     \new PianoStaff <<
       \set Staff.instrumentName = #"Piano"
-      \new Staff = "right" { \transpose c a, { \upper-print }}
+      \new Staff = "right" { \upper-original-key }
       % \new Dynamics = "Dynamics_pf" \dynamics
-      \new Staff = "left" { \transpose c a, { \lower-print }}
+      \new Staff = "left" { \lower-original-key }
     >>
     \new Staff <<
       \new Dynamics = "pedal-marking" \pedals
