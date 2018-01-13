@@ -286,7 +286,7 @@ lower-verse-two = \relative c {
   } >>
 }
 
-upper-chorus-last = \relative c' {
+upper-chorus-last-and-outro = \relative c' {
   f32\( bes c d f d bes g c16\)
   % r4 r16
   g'16\( g e
@@ -295,8 +295,21 @@ upper-chorus-last = \relative c' {
   c\( d e g16 a g e g e e d d4~ \stemUp d16\) c\( d c
   \stemNeutral
   d8 c16 d~ d e8 f16~ f e~ e d32 e d16 c c8\)
-  a'4.\( e8 d4. d16 e g4. d16 e c4~ c16\) c\( d e
-  g a g e g e e d d4 a c\)
+  a'4.\( e8 d4. d16 e g4. d16 e c4~ c16\)
+  << {
+    \stemNeutral
+    c16\( d e g a g e g e e d d4 a
+    \stemDown
+    c\)
+  } \\ {
+    s16*3 s1
+    \stemUp d16^\( e d e
+    \stemNeutral
+    g e g e d8 d16 e a,8 g\)
+    d'16^\( e d e g e g e d8 d16 e a,8 g\)
+    d'16^\( e d e g e g e d8 d16 e a,8 g\)
+    d'16^\( e d e g e g e d2\)
+  } >>
 }
 
 lower-chorus-end-two = \relative c' {
@@ -340,16 +353,22 @@ lower-chorus-last = \relative c {
     d,16 a' c e~ e4
     \stemNeutral
     \cl g,,16 a' \cr \stemDown d f~ f4
-    \stemNeutral
-    \cl c,16 g' \cr e' d~ d8 e
+    \stemDown
+    \cl c,16 g' c d~ d4
+    c,16 g' c d~ d4
+    f,16 c' f g~ g4
+    f,16 c' f g~ g4
+    a,,16 g' c e~ e4
+    a,,16 g' c e~ e4
+    f,16 c' f g~ g4
   } \\ {
     f,4. c8 f2
     e4. e16 b a2
     d2 g,2
-    c2
+    \stemUp
+    c2 c f f a, a f'1
   } >>
 }
-
 
 pedals = {
   s8 s4
@@ -389,6 +408,8 @@ pedals = {
   \repeat unfold 7 { s2\sustainOff\sustainOn }
   \repeat unfold 2 { s4\sustainOff\sustainOn }
   \repeat unfold 6 { s2\sustainOff\sustainOn }
+  \repeat unfold 6 { s2\sustainOff\sustainOn }
+  s2.\sustainOff\sustainOn s4\sustainOff
 }
 
 upper-print = \relative c' {
@@ -405,7 +426,7 @@ upper-print = \relative c' {
   \upper-episode
   \upper-verse-two
   \upper-chorus-one
-  \upper-chorus-last
+  \upper-chorus-last-and-outro
   \bar "|."
 }
 
@@ -524,7 +545,7 @@ melody-chorus-two = \relative c''' {
   r16 g16 g e d e a,8 d16 e g e~ e d8.
   r16 g g e d e g,8 d'16 e g d~ d c8.
   r16 c d e g a g e g e e d d8 r16
-  g,16 e'8 d16 d~ d c8.~ c4 r4
+  g,16 e'8 d16 d~ d c8.~ c4 r2
 }
 
 melody = \relative c' {
@@ -539,7 +560,7 @@ melody = \relative c' {
   \melody-verse-two
   \melody-chorus
   \melody-chorus-two
-  r4 R1 R1 R1
+  R1 R1 R1
   \bar "|."
 }
 
