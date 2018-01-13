@@ -37,6 +37,8 @@ makeOctaves = #(define-music-function (parser location arg mus) (integer? ly:mus
  (music-map (lambda (x) (octavize x arg)) (event-chord-wrap! mus)))
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+cr = \change Staff = "right"
+cl = \change Staff = "left"
 
 \header {
   title = "周杰倫 - 青花瓷"
@@ -49,39 +51,17 @@ upper-prelude = \relative c''' {
   \makeOctaves 1 { c16\( d e g g e e8 d c } <d fis d'>16 \makeOctaves 1 { c a8 c16 d e8 }
   <g g'>2~\startTrillSpan\finger \markup \tied-lyric #"45-13" g'4\stopTrillSpan\) r4
 }
-upper-prelude-midi = \relative c''' {
-  s16 \acciaccatura g a\( g e d e d\sustainOn c a8~ a8 d16 e
-  d\sustainOff\sustainOn c g8~ g d'16 e
-  d\sustainOff\sustainOn c a8 c16 d8 a16
-  e'4\)\sustainOff\sustainOn
-  \makeOctaves 1 { c16\( d e g g\sustainOff\sustainOn e e8 d c }
-  <d fis d'>16\sustainOff\sustainOn \makeOctaves 1 { c a8 c16 d e8 }
-  <g g'>2~\startTrillSpan\sustainOff\sustainOn g'4\stopTrillSpan\)
-  r4
-}
 
 lower-prelude = \relative c {
   s16 r16 r4
-  f16\sustainOn a-3 c-1 d-3 e-2 g-1 d-3 e-1
-  e,16\sustainOff\sustainOn g-3 c-1 d-3 e-2 g-1 d-3 e-1
-  d,16\sustainOff\sustainOn a'-2 c-1 e-3 f a e f-1
-  c,16\sustainOff\sustainOn g' c-1 d-3 e g d e-1
-  a,,16\sustainOff\sustainOn e' g a c4
-  d,,16\sustainOff\sustainOn a' c d fis4
-  g,16\sustainOff\sustainOn d'-2 f-1 a-3 c-2 f-1 a,-4 c-2
-  <g b d>2\sustainOff\sustainOn
-}
-
-lower-prelude-midi = \relative c {
-  s16 r16 r4
-  f16\sustainOn a c d e g d e
-  e,32~\sustainOff e\sustainOn g16 c d e g d e
-  d,32~\sustainOff d\sustainOn a'16 c e f a e f
-  c,32~\sustainOff c\sustainOn g'16 c d e g d e
-  a,,32~\sustainOff a\sustainOn e'16 g a c4
-  d,,32~\sustainOff d\sustainOn a'16 c d fis4
-  g,32~\sustainOff g\sustainOn d'16 f a c f a, c
-  <g b d>2\sustainOff\sustainOn
+  f16 a-3 c-1 d-3 e-2 g-1 d-3 e-1
+  e,16 g-3 c-1 d-3 e-2 g-1 d-3 e-1
+  d,16 a'-2 c-1 e-3 f a e f-1
+  c,16 g' c-1 d-3 e g d e-1
+  a,,16 e' g a c4
+  d,,16 a' c d fis4
+  g,16 d'-2 f-1 a-3 c-2 f-1 a,-4 c-2
+  <g b d>2
 }
 
 upper-verse-one = \relative c' {
@@ -91,79 +71,41 @@ upper-verse-one = \relative c' {
 
 lower-verse-one = \relative c {
   << {
-    \change Staff = "left" c16\sustainOn g'
-    \change Staff = "right" c16 g'~ g4
-    \change Staff = "left" c,,16\sustainOff\sustainOn g'
-    \change Staff = "right" d'16 g~ g d c d
-    \change Staff = "left" a,16\sustainOff\sustainOn g'
-    \change Staff = "right" c16 g'~ g4
-    \change Staff = "left" a,,16\sustainOff\sustainOn
-    \change Staff = "right" c'16 d g~ g d c d
-    \change Staff = "left" f,,16\sustainOff\sustainOn
-    \change Staff = "right" c''16 e g~ g4
-    \change Staff = "left" f,,16\sustainOff\sustainOn
-    \change Staff = "right" c''16 e g~ g e d e
-    \change Staff = "left" d,16\sustainOff\sustainOn g
-    \change Staff = "right" c16 g'~ g8 c,
+    \stemNeutral
+    \cl c16 g'
+    \cr c16 g'~ g4
+    \cl c,,16 g'
+    \cr d'16 g~ g d c d
+    \cl a,16 g'
+    \cr c16 g'~ g4
+    \cl a,,16
+    \cr c'16 d g~ g d c d
+    \cl f,,16
+    \cr c''16 e g~ g4
+    \cl f,,16
+    \cr c''16 e g~ g e d e
+    \cl d,16 g
+    \cr c16 g'~ g8 c,
   } \\ {
     c,2 c2 a2 a f f d'
   } >>
-  g,2\sustainOff\sustainOn
+  g,2
   << {
-    \change Staff = "left" c16\sustainOff\sustainOn g'
-    \change Staff = "right" c16 g'~ g8 d
-    \change Staff = "left" c,16\sustainOff\sustainOn g'
-    \change Staff = "right" d'16 g~ g d c d
-    \change Staff = "left" e,16\sustainOff\sustainOn
-    \change Staff = "right" b'16 d g~ g8 b,
-    \change Staff = "left" a,16\sustainOff\sustainOn e'
-    \change Staff = "right" a16 c~ c e c g
-    \change Staff = "left" f16\sustainOff\sustainOn
-    \change Staff = "right" c'16 e g~ g8 f
-    \change Staff = "left" d,16\sustainOff\sustainOn g
-    \change Staff = "right" c16 d~ d8 g
-    \change Staff = "left" c,,16\sustainOff\sustainOn g'
-    \change Staff = "right" c16 d~ d4
-  } \\ {
-    c,2 c e a, f' d c4. c8
-  } >>
-}
-
-lower-verse-one-midi = \relative c {
-  << {
-    \change Staff = "left" c16\sustainOn g'
-    \change Staff = "right" c16 g'~ g4
-    \change Staff = "left" c,,32~\sustainOff c\sustainOn g'16
-    \change Staff = "right" d'16 g~ g d c d
-    \change Staff = "left" a,32~\sustainOff a\sustainOn g'16
-    \change Staff = "right" c16 g'~ g4
-    \change Staff = "left" a,,32~\sustainOff a\sustainOn
-    \change Staff = "right" c'16 d g~ g d c d
-    \change Staff = "left" f,,32~\sustainOff f\sustainOn
-    \change Staff = "right" c''16 e g~ g4
-    \change Staff = "left" f,,32~\sustainOff f\sustainOn
-    \change Staff = "right" c''16 e g~ g e d e
-    \change Staff = "left" d,32~\sustainOff d\sustainOn g16
-    \change Staff = "right" c16 g'~ g8 c,
-  } \\ {
-    c,2 c2 a2 a f f d'
-  } >>
-  g,16~\sustainOff g8.~\sustainOn g4
-  << {
-    \change Staff = "left" c32~\sustainOff c\sustainOn g'16
-    \change Staff = "right" c16 g'~ g8 d
-    \change Staff = "left" c,32~\sustainOff c\sustainOn g'16
-    \change Staff = "right" d'16 g~ g d c d
-    \change Staff = "left" e,32~\sustainOff e\sustainOn
-    \change Staff = "right" b'16 d g~ g8 b,
-    \change Staff = "left" a,32~\sustainOff a\sustainOn e'16
-    \change Staff = "right" a16 c~ c e c g
-    \change Staff = "left" f32~\sustainOff f\sustainOn
-    \change Staff = "right" c'16 e g~ g8 f
-    \change Staff = "left" d,32~\sustainOff d\sustainOn g16
-    \change Staff = "right" c16 d~ d8 g
-    \change Staff = "left" c,,32~\sustainOff c\sustainOn g'16
-    \change Staff = "right" c16 d~ d4
+    \stemNeutral
+    \cl c16 g'
+    \cr c16 g'~ g8 d
+    \cl c,16 g'
+    \cr d'16 g~ g d c d
+    \cl e,16
+    \cr b'16 d g~ g8 b,
+    \cl a,16 e'
+    \cr a16 c~ c e c g
+    \cl f16
+    \cr c'16 e g~ g8 f
+    \cl d,16 g
+    \cr c16 d~ d8 g
+    \cl c,,16 g'
+    \cr c16 d~ d4
   } \\ {
     c,2 c e a, f' d c4. c8
   } >>
@@ -185,53 +127,39 @@ upper-chorus-one = \relative c'' {
   g8 e d c d4. c8 c2\)
 }
 lower-chorus-one = \relative c {
-  g4\sustainOff\sustainOn e'\sustainOff\sustainOn
+  g4 e'
   << {
-    f16\sustainOff\sustainOn c' f a~ a4
-    f,16\sustainOff\sustainOn d' g b~ b4
-    e,,16\sustainOff\sustainOn b' d g~ g4
-    a,,16\sustainOff\sustainOn e' a c~ c4
-    d,16\sustainOff\sustainOn a' c e~ e4
-    g,,16\sustainOff\sustainOn a' d f~ f4
+    \stemNeutral
+    f16 c' \cr f a~ \stemDown a4
+    \stemNeutral
+    \cl f,16 d' \cr \stemDown g b~ b4
+    \stemNeutral
+    \cl e,,16 b' d \cr \stemDown g~ g4
+    \stemUp
+    \cl a,,16 e' a c~ \stemDown c4
+    \stemNeutral
+    d,16 a' c \cr \stemDown e~ e4
+    \stemNeutral
+    \cl g,,16 a' \cr \stemDown d f~ f4
+    \stemNeutral
   } \\ {
     f,2 f
     e4. e16 b a2
     d4. a8 g2
   } >>
-  c2\sustainOff\sustainOn c,8\sustainOff\sustainOn c'16 d e4\sustainOff\sustainOn
-}
-lower-chorus-one-midi = \relative c {
-  g16~\sustainOff g8.~\sustainOn e'
+  c2 c8 c16 d e4
 }
 
-upper-midi = \relative c' {
-  \set Staff.pedalSustainStyle = #'bracket
-  \clef treble
-  \tempo 4 = 54
-  \time 4/4
-  \key c \major
-  \partial 16*6
-  \upper-prelude-midi
-  \upper-verse-one
-  \upper-chorus-one
-  \bar "|."
-}
-
-lower-midi = \relative c {
-  \set Staff.pedalSustainStyle = #'bracket
-  \clef bass
-  \time 4/4
-  \key c \major
-  \partial 16*6
-  \lower-prelude-midi
-  \lower-verse-one-midi
-  % \lower-chorus-one-midi
-  \lower-chorus-one
-  \bar "|."
+pedals = {
+  s8 s4
+  s2\sustainOn
+  \repeat unfold 22 { s2\sustainOff\sustainOn }
+  \repeat unfold 2 { s4\sustainOff\sustainOn }
+  \repeat unfold 7 { s2\sustainOff\sustainOn }
+  \repeat unfold 2 { s4\sustainOff\sustainOn }
 }
 
 upper-print = \relative c' {
-  \set Staff.pedalSustainStyle = #'bracket
   \set fingeringOrientations = #'(up)
   \clef treble
   \tempo 4 = 54
@@ -245,7 +173,6 @@ upper-print = \relative c' {
 }
 
 lower-print = \relative c {
-  \set Staff.pedalSustainStyle = #'bracket
   \clef bass
   \time 4/4
   \key c \major
@@ -389,17 +316,17 @@ melody = \relative c' {
       \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
     >>
     \new PianoStaff <<
-      \set Staff.midiInstrument = #"acoustic grand"
-      \set Staff.instrumentName = #"Piano"
       \new Staff = "right" {
+        \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate \upper-midi
+        \articulate << \upper-print \pedals >>
       }
       \new Staff = "left" {
+        \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \lower-midi
+        \articulate << \lower-print \pedals >>
       }
     >>
   >>
@@ -424,19 +351,23 @@ melody = \relative c' {
       \override StaffSymbol.thickness = #(magstep -3)
     }
     <<
-      \set Staff.midiInstrument = #"choir aahs"
-      \set Staff.instrumentName = #"Ocarina"
+      \set Staff.instrumentName = #"Solo"
       \new Voice = "melody" {
         \melody
       }
       \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
     >>
     \new PianoStaff <<
-      \set Staff.midiInstrument = #"acoustic grand"
       \set Staff.instrumentName = #"Piano"
       \new Staff = "right" { \upper-print }
-      \new Dynamics = "Dynamics_pf" \dynamics
+      % \new Dynamics = "Dynamics_pf" \dynamics
       \new Staff = "left" { \lower-print }
+    >>
+    \new Staff <<
+      % TODO: pedal sustain style bracket not working
+      \set Staff.pedalSustainStyle = #'bracket
+
+      \new Dynamics = "pedal-marking" \pedals
     >>
   >>
   \layout {
@@ -446,7 +377,7 @@ melody = \relative c' {
     }
     \context {
       % add the RemoveEmptyStaffContext that erases rest-only staves
-      \Dynamics \RemoveEmptyStaves
+      % \Dynamics \RemoveEmptyStaves
     }
     \context {
       \Score
@@ -477,19 +408,20 @@ melody = \relative c' {
       \override StaffSymbol.thickness = #(magstep -3)
     }
     <<
-      \set Staff.midiInstrument = #"choir aahs"
-      \set Staff.instrumentName = #"Ocarina"
+      \set Staff.instrumentName = #"Solo"
       \new Voice = "melody" {
         \transpose c a, { \melody }
       }
       \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
     >>
     \new PianoStaff <<
-      \set Staff.midiInstrument = #"acoustic grand"
       \set Staff.instrumentName = #"Piano"
       \new Staff = "right" { \transpose c a, { \upper-print }}
-      \new Dynamics = "Dynamics_pf" \dynamics
+      % \new Dynamics = "Dynamics_pf" \dynamics
       \new Staff = "left" { \transpose c a, { \lower-print }}
+    >>
+    \new Staff <<
+      \new Dynamics = "pedal-marking" \pedals
     >>
   >>
   \layout {
@@ -499,7 +431,7 @@ melody = \relative c' {
     }
     \context {
       % add the RemoveEmptyStaffContext that erases rest-only staves
-      \Dynamics \RemoveEmptyStaves
+      % \Dynamics \RemoveEmptyStaves
     }
     \context {
       \Score
