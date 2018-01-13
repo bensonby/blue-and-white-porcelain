@@ -117,14 +117,15 @@ upper-chorus-one = \relative c'' {
   g,4. d'8 c2\)
   d4.\( c8 d2\)
   << { e2 } \\ {
-    r16 g,\( a c d c d e
-    \stemNeutral
+    r16 g,^\( a c d c d e
     <f g,>8 e <d g,> c
-    a4.\)\( e'8 d4.\)
+    \stemNeutral
+    a4.\)^\( e'8 d4.\)
   } >>
   d16\( e
   g4. a8 c,4~ c16\) c\( d e
   g8 e d c d4. c8 c2\)
+  <c, e g>4.
 }
 lower-chorus-one = \relative c {
   g4 e'
@@ -148,6 +149,28 @@ lower-chorus-one = \relative c {
     d4. a8 g2
   } >>
   c2 c8 c16 d e4
+  << {
+    \stemNeutral
+    f16 c' \cr f a~ \stemDown a4
+    \stemNeutral
+    \cl f,16 d' \cr \stemDown g b~ b4
+    \stemNeutral
+    \cl e,,16 b' d \cr \stemDown g~ g4
+    \stemUp
+    \cl a,,16 e' a c~ \stemDown c4
+    \stemUp
+    d,16 a' c e~ e4
+    \stemNeutral
+    \cl g,,16 a' \cr \stemDown d f~ f4
+    \stemNeutral
+    \cl c,16 g' \cr e' d~ d8 e
+  } \\ {
+    f,4. c8 f2
+    e4. e16 b a2
+    d2 g,2
+    c2
+  } >>
+  c4.
 }
 
 pedals = {
@@ -157,6 +180,7 @@ pedals = {
   \repeat unfold 2 { s4\sustainOff\sustainOn }
   \repeat unfold 7 { s2\sustainOff\sustainOn }
   \repeat unfold 2 { s4\sustainOff\sustainOn }
+  \repeat unfold 8 { s2\sustainOff\sustainOn }
 }
 
 upper-print = \relative c' {
