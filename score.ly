@@ -119,7 +119,28 @@ upper-chorus-one = \relative c'' {
   a4.\)\( e'8 d4.\) d16\( e
   g,4. d'8 c2\)
   d4.\( c8 d2\)
-  << { e2 } \\ {
+  r16 g,^\( a c d c d e
+  <f g,>8 e <d g,> c
+  a4.\)^\( e'8 d4.\)
+  d16\( e
+  g4. a8 c,4~ c16\) c\( d e
+  g8 e d c d4. \stemUp c8 \stemNeutral c2\)
+}
+upper-chorus-end-one = \relative c' {
+  <c e g>4.
+}
+upper-chorus-two = \relative c'' {
+  <f g,>8\( e <d g,> c
+  a4.\)\( e'8 d4.\) d16\( e
+  g,4. d'8 c2\)
+  << {
+    \stemNeutral
+    d4.\( c8 d4. a8
+    \stemUp
+    e'2\)
+  } \\ {
+    s1
+    \stemDown
     r16 g,^\( a c d c d e
     <f g,>8 e <d g,> c
     \stemNeutral
@@ -128,9 +149,6 @@ upper-chorus-one = \relative c'' {
   d16\( e
   g4. a8 c,4~ c16\) c\( d e
   g8 e d c d4. \stemUp c8 \stemNeutral c2\)
-}
-upper-chorus-end-one = \relative c' {
-  <c e g>4.
 }
 
 lower-chorus-start = \relative c {
@@ -294,7 +312,7 @@ upper-chorus-last-and-outro = \relative c' {
   g,4. d'8 \stemNeutral c4~ c16\)
   c\( d e g16 a g e g e e d d4~ \stemUp d16\) c\( d c
   \stemNeutral
-  d8 c16 d~ d e8 f16~ f e~ e d32 e d16 c c8\)
+  <d e, g>8 c16 d~ d e8 f16~ f e~ e d32 e d16 c c8\)
   a'4.\( e8 d4. d16 e g4. d16 e c4~ c16\)
   << {
     \stemNeutral
@@ -327,16 +345,19 @@ lower-chorus-last = \relative c {
     \cl f,16 d' \cr \stemDown g b~ b4
     \stemNeutral
     \cl e,,16 b' d \cr \stemDown g~ g4
-    \stemUp
-    \cl a,,16 e' a c~ \stemDown c4
+    \stemDown
+    \cl a,,16
+    \set fingeringOrientations = #'(left)
+    <e''\finger \rhMark>
+    d c a g e c
     \stemNeutral
-    d,16 a' c e~ e4
+    d16 a' c e~ e4
     \stemNeutral
     \cl g,,16 a' \cr \stemDown d f~ f4
     \stemNeutral
   } \\ {
     f,2 f
-    e4. e16 b a2
+    e4. e16 b \stemUp a2
     \stemUp d4. \stemDown a8 g2
   } >>
   c2 c8 c16 d e4
@@ -425,7 +446,7 @@ upper-print = \relative c' {
   \upper-chorus-end-one
   \upper-episode
   \upper-verse-two
-  \upper-chorus-one
+  \upper-chorus-two
   \upper-chorus-last-and-outro
   \bar "|."
 }
