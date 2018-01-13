@@ -127,11 +127,16 @@ upper-chorus-one = \relative c'' {
   } >>
   d16\( e
   g4. a8 c,4~ c16\) c\( d e
-  g8 e d c d4. c8 c2\)
-  <c, e g>4.
+  g8 e d c d4. \stemUp c8 \stemNeutral c2\)
+}
+upper-chorus-end-one = \relative c' {
+  <c e g>4.
+}
+
+lower-chorus-start = \relative c {
+  g4 e'
 }
 lower-chorus-one = \relative c {
-  g4 e'
   << {
     \stemNeutral
     f16 c' \cr f a~ \stemDown a4
@@ -173,6 +178,8 @@ lower-chorus-one = \relative c {
     d2 g,2
     c2
   } >>
+}
+lower-chorus-end-one = \relative c {
   c4.
 }
 
@@ -222,6 +229,128 @@ lower-episode = \relative c {
   } >>
 }
 
+upper-verse-two = \relative c' {
+  s1 s1 s1 s2 <b d g>4\arpeggio g''
+  g,2.\( \stemUp d'4 \stemNeutral e2. \stemUp g8 g,
+  a2. g4
+  \stemNeutral
+  c2\)
+}
+
+lower-verse-two = \relative c {
+  << {
+    \stemNeutral
+    \cl c16 g'
+    \cr c16 g'~ g4
+    \cl c,,16 g'
+    \cr d'16 g~ g d c d
+    \cl a,16 g'
+    \cr c16 g'~ g4
+    \cl a,,16
+    \cr c'16 d g~ g d c d
+    \cl f,,16
+    \cr c''16 e g~ g4
+    \cl f,,16
+    \cr c''16 e g~ g e d e
+    \cl d,16 g
+    \cr c16 g'~ g8 c,
+  } \\ {
+    c,2 c4. b8 a2 a4. g8 f2 f d'
+  } >>
+  g,2
+  << {
+    \stemNeutral
+    \cl c16 g'
+    \cr c16 g'~ g8 d
+    \cl c,16 g'
+    \cr d'16 g~ \stemDown g d c d
+    \stemDown
+    \cl e,16
+    b'16 d g~ g8 b,
+    a,16 e'
+    a16 c~ c e c g
+    \stemNeutral
+    f16
+    \cr c'16 e g~ g8 f
+    \cl d,16 g
+    \cr c16 d~ \stemDown d4
+    \stemNeutral
+    \cl c,16 g'
+    \cr c16 d~ d4
+  } \\ {
+    c,2 c4. d8
+    \stemUp
+    e2 a,
+    \stemDown
+    f' d c4. c8
+  } >>
+}
+
+upper-chorus-last = \relative c' {
+  f32\( bes c d f d bes g c16\)
+  % r4 r16
+  g'16\( g e
+  a4. \stemUp e8 \stemNeutral d4.\) \stemUp e8\(
+  g,4. d'8 \stemNeutral c4~ c16\)
+  c\( d e g16 a g e g e e d d4~ \stemUp d16\) c\( d c
+  \stemNeutral
+  d8 c16 d~ d e8 f16~ f e~ e d32 e d16 c c8\)
+  a'4.\( e8 d4. d16 e g4. d16 e c4~ c16\) c\( d e
+  g a g e g e e d d4 a c\)
+}
+
+lower-chorus-end-two = \relative c' {
+  << {
+    g16 bes d f e, g c e
+  } \\ {
+    g,4 e
+  } >>
+}
+lower-chorus-last = \relative c {
+  << {
+    \stemNeutral
+    f16 c' f \cr a~ \stemDown a4
+    \stemNeutral
+    \cl f,16 d' \cr \stemDown g b~ b4
+    \stemNeutral
+    \cl e,,16 b' d \cr \stemDown g~ g4
+    \stemUp
+    \cl a,,16 e' a c~ \stemDown c4
+    \stemNeutral
+    d,16 a' c e~ e4
+    \stemNeutral
+    \cl g,,16 a' \cr \stemDown d f~ f4
+    \stemNeutral
+  } \\ {
+    f,2 f
+    e4. e16 b a2
+    \stemUp d4. \stemDown a8 g2
+  } >>
+  c2 c8 c16 d e4
+  << {
+    \stemNeutral
+    f16 c' f \cr a~ \stemDown a4
+    \stemNeutral
+    \cl f,16 d' \cr \stemDown g b~ b4
+    \stemNeutral
+    \cl e,,16 b' d \cr \stemDown g~ g4
+    \stemUp
+    \cl a,,16 e' a c~ \stemDown c4
+    \stemUp
+    d,16 a' c e~ e4
+    \stemNeutral
+    \cl g,,16 a' \cr \stemDown d f~ f4
+    \stemNeutral
+    \cl c,16 g' \cr e' d~ d8 e
+  } \\ {
+    f,4. c8 f2
+    e4. e16 b a2
+    d2 g,2
+    c2
+  } >>
+}
+
+
 pedals = {
   s8 s4
   s2\sustainOn
@@ -239,6 +368,27 @@ pedals = {
   s8\sustainOff\sustainOn
   s2\sustainOff\sustainOn
   \repeat unfold 4 { s2\sustainOff\sustainOn }
+  % verse 2
+  s2\sustainOff\sustainOn
+  s4.\sustainOff\sustainOn
+  s8\sustainOff\sustainOn
+  s2\sustainOff\sustainOn
+  s4.\sustainOff\sustainOn
+  s8\sustainOff\sustainOn
+  \repeat unfold 4 { s2\sustainOff\sustainOn }
+  s2\sustainOff\sustainOn
+  s4.\sustainOff\sustainOn
+  s8\sustainOff\sustainOn
+  \repeat unfold 5 { s2\sustainOff\sustainOn }
+  \repeat unfold 2 { s4\sustainOff\sustainOn }
+  % chorus
+  \repeat unfold 7 { s2\sustainOff\sustainOn }
+  \repeat unfold 2 { s4\sustainOff\sustainOn }
+  \repeat unfold 7 { s2\sustainOff\sustainOn }
+  \repeat unfold 2 { s4\sustainOff\sustainOn }
+  \repeat unfold 7 { s2\sustainOff\sustainOn }
+  \repeat unfold 2 { s4\sustainOff\sustainOn }
+  \repeat unfold 6 { s2\sustainOff\sustainOn }
 }
 
 upper-print = \relative c' {
@@ -251,7 +401,11 @@ upper-print = \relative c' {
   \upper-prelude
   \upper-verse-one
   \upper-chorus-one
+  \upper-chorus-end-one
   \upper-episode
+  \upper-verse-two
+  \upper-chorus-one
+  \upper-chorus-last
   \bar "|."
 }
 
@@ -262,8 +416,15 @@ lower-print = \relative c {
   \partial 16*6
   \lower-prelude
   \lower-verse-one
+  \lower-chorus-start
   \lower-chorus-one
+  \lower-chorus-end-one
   \lower-episode
+  \lower-verse-two
+  \lower-chorus-start
+  \lower-chorus-one
+  \lower-chorus-end-two
+  \lower-chorus-last
   \bar "|."
 }
 
