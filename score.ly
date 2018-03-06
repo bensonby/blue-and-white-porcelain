@@ -516,7 +516,12 @@ lower-original-key = \relative c {
 }
 
 dynamics = {
-  s1
+  \partial 16*6
+  s8 s4 s1\mp s1*10
+  s2 s2\mf s1*3 s16 s8.\< s4 s2\! s1\mf s1*7
+  % second verse
+  s1\mp s1*3 s1\mf s1*6 s16 s8.\< s4 s2\! s1\mf s1*2
+  s2 s2\< s1\!\f s1*9 s1_\markup { \italic "rit." }
 }
 
 guitarchords = \chordmode {
@@ -742,27 +747,13 @@ melody-original-key = \relative c' {
       \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
     >>
     \new PianoStaff <<
-      \set Staff.instrumentName = #"Piano"
+      \set PianoStaff.instrumentName = #"Piano"
       \new Staff = "right" { \upper-c-major }
-      % \new Dynamics = "Dynamics_pf" \dynamics
+      \new Dynamics = "Dynamics_pf" \dynamics
       \new Staff = "left" { \lower-c-major }
-    >>
-    \new Staff <<
-      % TODO: pedal sustain style bracket not working
-      \set Staff.pedalSustainStyle = #'bracket
-
-      \new Dynamics = "pedal-marking" \pedals
     >>
   >>
   \layout {
-    \context {
-      % add the RemoveEmptyStaffContext that erases rest-only staves
-      \Staff \RemoveEmptyStaves
-    }
-    \context {
-      % add the RemoveEmptyStaffContext that erases rest-only staves
-      % \Dynamics \RemoveEmptyStaves
-    }
     \context {
       \Score
       % Remove all-rest staves also in the first system
@@ -799,24 +790,13 @@ melody-original-key = \relative c' {
       \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
     >>
     \new PianoStaff <<
-      \set Staff.instrumentName = #"Piano"
+      \set PianoStaff.instrumentName = #"Piano"
       \new Staff = "right" { \upper-original-key }
-      % \new Dynamics = "Dynamics_pf" \dynamics
+      \new Dynamics = "Dynamics_pf" \dynamics
       \new Staff = "left" { \lower-original-key }
-    >>
-    \new Staff <<
-      \new Dynamics = "pedal-marking" \pedals
     >>
   >>
   \layout {
-    \context {
-      % add the RemoveEmptyStaffContext that erases rest-only staves
-      \Staff \RemoveEmptyStaves
-    }
-    \context {
-      % add the RemoveEmptyStaffContext that erases rest-only staves
-      % \Dynamics \RemoveEmptyStaves
-    }
     \context {
       \Score
       % Remove all-rest staves also in the first system
