@@ -43,10 +43,16 @@ rhMark = \markup {
   \path #0.1 #'((moveto -1 0)(rlineto 0 -1.5)(rlineto 0.5 0))
 }
 
+\paper {
+  oddFooterMarkup = \markup { \fill-line { "https://music.bensonby.me" }}
+  evenFooterMarkup = \markup { \fill-line { "https://music.bensonby.me" }}
+}
+
 \header {
   title = "周杰倫 - 青花瓷"
-  subtitle = "For soloist and piano accompaniment"
+  subtitle = "鋼琴伴奏版"
   arranger = "Arranged by Benson"
+  composer = "Composed by Jay Chou"
 }
 
 upper-prelude = \relative c''' {
