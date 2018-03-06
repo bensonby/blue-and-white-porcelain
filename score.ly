@@ -434,8 +434,7 @@ pedals = {
   s2.\sustainOff\sustainOn s4\sustainOff
 }
 
-upper-c-major = \relative c' {
-  \set fingeringOrientations = #'(up)
+upper-c-major = \relative c' { \set fingeringOrientations = #'(up)
   \clef treble
   \tempo 4 = 54
   \time 4/4
