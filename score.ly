@@ -2,6 +2,11 @@
 \include "articulate.ly"
 #(set-global-staff-size 15)
 
+% collision for dynamics
+% revise fingerings (different fingerings for different key)
+% add chords for guitar
+% write remarks or modify title for C major version
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  http://lsr.di.unimi.it/LSR/Item?id=445
 
@@ -42,6 +47,9 @@ cl = \change Staff = "left"
 rhMark = \markup { 
   \path #0.1 #'((moveto -1 0)(rlineto 0 -1.5)(rlineto 0.5 0))
 }
+lhMark = \markup { 
+  \path #0.1 #'((moveto 0 1)(rlineto -0.5 0)(rlineto 0 -1.5))
+}
 
 \paper {
   oddFooterMarkup = \markup { \fill-line { "https://music.bensonby.me" }}
@@ -69,7 +77,7 @@ lower-prelude = \relative c {
   c,16 g' c-1 d-3 e g d e-1
   a,,16 e' g a c4
   d,,16 a' c d fis4
-  g,16 d'-2 f-1 a-3 c-2 f-1 a,-4 c-2
+  g,16 d'-2 f-1 a c-2 f-1 a,-4 c-2
   <g b d>2
 }
 
@@ -122,39 +130,53 @@ lower-verse-one = \relative c {
 
 upper-chorus-one = \relative c'' {
   <f g,>8\( e <d g,> c
-  a4.\)\( e'8 d4.\) d16\( e
-  g,4. d'8 c2\)
-  d4.\( c8 d2\)
+  \stemUp
+  a4.\)^\( e'8 d4.\) d16\( e
+  g,4. d'8
+  \stemNeutral
+  c2\)
+  \stemUp
+  d4.^\( c8 d2\)
+  \stemNeutral
   r16 g,^\( a c d c d e
   <f g,>8 e <d g,> c
+  \stemUp
   a4.\)^\( e'8 d4.\)
   d16\( e
-  g4. a8 c,4~ c16\) c\( d e
-  g8 e d c d4. \stemUp c8 \stemNeutral c2\)
+  g4. a8
+  \stemNeutral
+  c,4~ c16\) c\( d e
+  g8 e d c
+  \stemUp
+  d4. c8 c2\)
 }
 upper-chorus-end-one = \relative c' {
   <c e g>4.
 }
 upper-chorus-two = \relative c'' {
-  <f g,>8\( e <d g,> c
-  a4.\)\( e'8 d4.\) d16\( e
-  g,4. d'8 c2\)
+  <f g,>8^\( e <d g,> c
+  \stemUp
+  a4.^\)\( e'8 d4.\) d16\( e
+  g,4. d'8
+  \stemNeutral
+  c2\)
   << {
-    \stemNeutral
     d4.\( c8 d4. a8
-    \stemUp
     e'2\)
   } \\ {
     s1
     \stemDown
     r16 g,^\( a c d c d e
     <f g,>8 e <d g,> c
-    \stemNeutral
+    \stemUp
     a4.\)^\( e'8 d4.\)
   } >>
+  \stemUp
   d16\( e
-  g4. a8 c,4~ c16\) c\( d e
-  g8 e d c d4. \stemUp c8 \stemNeutral c2\)
+  g4. a8
+  \stemNeutral
+  c,4~ c16\) c\( d e
+  g8 e d c \stemUp d4. c8 c2\)
 }
 
 lower-chorus-start = \relative c {
@@ -195,7 +217,7 @@ lower-chorus-one = \relative c {
     \stemNeutral
     \cl g,,16 a' \cr \stemDown d f~ f4
     \stemNeutral
-    \cl c,16 g' \cr e' d~ d8 e
+    \cl c,16 g' \cr e' d~ \stemDown d8 e
   } \\ {
     f,4. c8 f2
     e4. e16 b a2
@@ -208,9 +230,9 @@ lower-chorus-end-one = \relative c {
 }
 
 upper-episode = \relative c'' {
-  e16\( g a4. \stemUp g16 e \stemNeutral d4.\)
-  \stemUp c16\(-3 d-1 \stemNeutral g4.-5 \stemUp g16 d c4.\)
-  \stemUp c16\(-3 d-4 e8 d-4 c-5 a-4 \stemNeutral c\finger "5 - 1" d e a
+  e16^\( g \stemUp a4. g16 e d4.\)
+  c16^\(-3 d-1 g4.-5 g16 d c4.\)
+  c16\(-3 d-4 e8 d-4 c-5 a-4 \stemNeutral c\finger "5-1" d e a
   g2~\)\startTrillSpan g4\stopTrillSpan r4
 }
 
@@ -236,7 +258,11 @@ lower-episode = \relative c {
     \stemNeutral
     d,,16 a' c \cr e
     \stemDown
-    f c e-2 f-1 \cl
+    f c
+    \set fingeringOrientations = #'(left)
+    <e-2>
+    \set fingeringOrientations = #'(up)
+    f-1 \cl
     \stemUp
     d,16 \clef treble a'-5 c-3 e-2
     \stemNeutral
@@ -245,7 +271,7 @@ lower-episode = \relative c {
     <c'\finger \rhMark> e, f
     \clef bass
     \stemUp
-    g,, d' g c g'8\noBeam e16[( g d2])
+    g,, d' g c g'8 e16( g d2)
   } \\ {
     f,2 f4. c16 d e4. e8 ees2
     d4. a8 d,2 g
@@ -255,9 +281,9 @@ lower-episode = \relative c {
 
 upper-verse-two = \relative c' {
   s1 s1 s1 s2 <b d g>4\arpeggio g''
-  g,2.\( \stemUp d'4 \stemNeutral e2. \stemUp g8 g,
-  a2. g4
-  \stemNeutral
+  \stemUp
+  g,2.\( d'4 \stemNeutral e2. g8 g,
+  \stemUp a2. g4
   c2\)
 }
 
@@ -285,7 +311,8 @@ lower-verse-two = \relative c {
   << {
     \stemNeutral
     \cl c16 g'
-    \cr c16 g'~ g8 d
+    \cr c16 g'~ \stemDown g8 d
+    \stemNeutral
     \cl c,16 g'
     \cr d'16 g~ \stemDown g d c d
     \stemDown
@@ -295,12 +322,13 @@ lower-verse-two = \relative c {
     a16 c~ c e c g
     \stemNeutral
     f16
-    \cr c'16 e g~ g8 f
+    \cr c'16 e g~ \stemDown g8 f
+    \stemNeutral
     \cl d,16 g
-    \cr c16 d~ \stemDown d4
+    \cr c16 d_~ \stemDown d4
     \stemNeutral
     \cl c,16 g'
-    \cr c16 d~ d4
+    \cr c16 d~ \stemDown d4
   } \\ {
     c,2 c4. d8
     \stemUp
@@ -312,17 +340,18 @@ lower-verse-two = \relative c {
 
 upper-chorus-last-and-outro = \relative c' {
   f32\( bes c d f d bes g c16\)
-  g'16\( g e
+  g'16^\( g e
   \key c \major
-  a4. \stemUp e8 \stemNeutral d4.\) \stemUp e8\(
-  g,4. d'8 \stemNeutral c4~ c16\)
+  \stemUp a4. e8 d4.\) e8^\(
+  g,4. d'8 c4~\) \stemNeutral c16
   c\( d e g16 a g e g e e d d4~ \stemUp d16\) c\( d c
   \stemNeutral
   <d e, g>8 c16 d~ d e8 f16~ f e~ e d32 e d16 c c8\)
-  a'4.\( e8 d4. d16 e g4. d16 e c4~ c16\)
+  \stemUp
+  a'4.\( e8 d4. d16 e g4. d16 e \stemNeutral c4~ c16\)
   << {
     \stemNeutral
-    c16\( d e g a g e g e e d d4 a
+    c16\( d e g a g e g e e d \stemUp d4 a
     \stemDown
     c\)
   } \\ {
@@ -353,19 +382,21 @@ lower-chorus-last = \relative c {
     \stemNeutral
     \cl e,,16 b' d \cr \stemDown g~ g4
     \stemDown
-    \cl a,,16
+    e16\rest
+    e
     \set fingeringOrientations = #'(left)
-    <e''\finger \rhMark>
-    d c a g e c
-    \stemNeutral
+    <d\finger \lhMark>
+    \once \override Glissando #'style = #'dashed-line
+    c\glissando \cl a g e c
+    \stemUp
     d16 a' c e~ e4
     \stemNeutral
     \cl g,,16 a' \cr \stemDown d f~ f4
     \stemNeutral
   } \\ {
     f,2 f
-    e4. e16 b \stemUp a2
-    \stemUp d4. \stemDown a8 g2
+    e4. e16 b a2
+    \stemDown d4. \stemDown a8 g2
   } >>
   c2 c8 c16 d e4
   << {
@@ -523,7 +554,7 @@ lower-original-key = \relative c {
 
 dynamics = {
   \partial 16*6
-  s8 s4 s1\mp s1*10
+  s16 s\mp s4 s1*11
   s2 s2\mf s1*3 s16 s8.\< s4 s2\! s1\mf s1*7
   % second verse
   s1\mp s1*3 s1\mf s1*6 s16 s8.\< s4 s2\! s1\mf s1*2
