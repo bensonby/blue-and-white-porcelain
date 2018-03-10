@@ -3,7 +3,6 @@
 #(set-global-staff-size 15)
 
 % collision for dynamics
-% revise fingerings (different fingerings for different key)
 % add chords for guitar
 % write remarks or modify title for C major version
 
@@ -71,13 +70,24 @@ upper-prelude = \relative c''' {
 
 lower-prelude = \relative c {
   s16 r16 r4
-  f16 a-3 c-1 d-3 e-2 g-1 d-3 e-1
-  e,16 g-3 c-1 d-3 e-2 g-1 d-3 e-1
-  d,16 a'-2 c-1 e-3 f a e f-1
-  c,16 g' c-1 d-3 e g d e-1
-  a,,16 e' g a c4
-  d,,16 a' c d fis4
-  g,16 d'-2 f-1 a c-2 f-1 a,-4 c-2
+  \tag #'c-major {
+    f16 a-3 c-1 d-3 e-2 g-1 d-3 e-1
+    e,16 g-3 c-1 d-3 e-2 g-1 d-3 e-1
+    d,16 a'-2 c-1 e-3 f a e f-1
+    c,16 g' c-1 d-3 e g d e-1
+    a,,16 e' g a c4
+    d,,16 a' c d fis4
+    g,16 d'-2 f-1 a c-2 f-1 a,-4 c-2
+  }
+  \tag #'original {
+    f,16 a c d e g d e
+    e,16 g c d e g d e
+    d,16 a' c-1 e f a e f
+    c,16 g' c d e g d e
+    a,,16 e' g a c4
+    d,,16 a' c d fis4
+    g,16 d'-2 f-1 a c-2 f-1 a,-4 c-2
+  }
   <g b d>2
 }
 
@@ -131,7 +141,7 @@ lower-verse-one = \relative c {
 upper-chorus-one = \relative c'' {
   <f g,>8\( e <d g,> c
   \stemUp
-  a4.\)^\( e'8 d4.\) d16\( e
+  a4.\)^\( e'8 d4.\) d16^\( e
   g,4. d'8
   \stemNeutral
   c2\)
@@ -142,7 +152,7 @@ upper-chorus-one = \relative c'' {
   <f g,>8 e <d g,> c
   \stemUp
   a4.\)^\( e'8 d4.\)
-  d16\( e
+  d16^\( e
   g4. a8
   \stemNeutral
   c,4~ c16\) c\( d e
@@ -156,7 +166,7 @@ upper-chorus-end-one = \relative c' {
 upper-chorus-two = \relative c'' {
   <f g,>8^\( e <d g,> c
   \stemUp
-  a4.^\)\( e'8 d4.\) d16\( e
+  a4.^\)^\( e'8 d4.\) d16^\( e
   g,4. d'8
   \stemNeutral
   c2\)
@@ -172,7 +182,7 @@ upper-chorus-two = \relative c'' {
     a4.\)^\( e'8 d4.\)
   } >>
   \stemUp
-  d16\( e
+  d16^\( e
   g4. a8
   \stemNeutral
   c,4~ c16\) c\( d e
@@ -231,8 +241,22 @@ lower-chorus-end-one = \relative c {
 
 upper-episode = \relative c'' {
   e16^\( g \stemUp a4. g16 e d4.\)
-  c16^\(-3 d-1 g4.-5 g16 d c4.\)
-  c16\(-3 d-4 e8 d-4 c-5 a-4 \stemNeutral c\finger "5-1" d e a
+  \tag #'c-major {
+    c16^\(-3 d-1 g4.-5
+  }
+  \tag #'original {
+    c,16^\( d g4.
+  }
+  g16 d c4.\)
+  c16\(-3 d-4 e8 d-4 c-5 a-4 \stemNeutral
+
+  \tag #'c-major {
+    c8\finger "5-1"
+  }
+  \tag #'original {
+    c8
+  }
+  d8 e a
   g2~\)\startTrillSpan g4\stopTrillSpan r4
 }
 
@@ -242,11 +266,17 @@ lower-episode = \relative c {
     \stemUp
     f16 a c d
     \stemNeutral
-    \cr g-2 a-1 \cl a, c
+    \cr
+    \tag #'c-major { g-2 a-1 }
+    \tag #'original { g-1 a-2 }
+    \cl a, c
     \stemUp
     f,16 aes c d
     \stemNeutral
-    \cr g-1 aes-2 \cl c, d
+    \cr
+    \tag #'c-major { g-1 aes-2 }
+    \tag #'original { g aes }
+    \cl c, d
     \stemUp
     e,16 g c d
     \stemNeutral
@@ -264,7 +294,9 @@ lower-episode = \relative c {
     \set fingeringOrientations = #'(up)
     f-1 \cl
     \stemUp
-    d,16 \clef treble a'-5 c-3 e-2
+    d,16
+    \tag #'c-major { \clef treble }
+    a'-5 c-3 e-2
     \stemNeutral
     f-1
     \set fingeringOrientations = #'(left)
@@ -411,7 +443,7 @@ lower-chorus-last = \relative c {
     \stemUp
     d,16 a' c e~ e4
     \stemNeutral
-    \cl g,,16 a' \cr \stemDown d f~ f4
+    \cl g,,16 a' \cr \stemDown d f_~ f4
     \stemDown
     \cl c,16 g' c d~ d4
     c,16 g' c d~ d4
@@ -785,9 +817,9 @@ melody-original-key = \relative c' {
     >>
     \new PianoStaff <<
       \set PianoStaff.instrumentName = #"Piano"
-      \new Staff = "right" { \upper-c-major }
+      \new Staff = "right" { \keepWithTag #'c-major \upper-c-major }
       \new Dynamics = "Dynamics_pf" \dynamics
-      \new Staff = "left" { \lower-c-major }
+      \new Staff = "left" { \keepWithTag #'c-major \lower-c-major }
     >>
   >>
   \layout {
@@ -828,9 +860,9 @@ melody-original-key = \relative c' {
     >>
     \new PianoStaff <<
       \set PianoStaff.instrumentName = #"Piano"
-      \new Staff = "right" { \upper-original-key }
+      \new Staff = "right" { \keepWithTag #'original \upper-original-key }
       \new Dynamics = "Dynamics_pf" \dynamics
-      \new Staff = "left" { \lower-original-key }
+      \new Staff = "left" { \keepWithTag #'original \lower-original-key }
     >>
   >>
   \layout {
