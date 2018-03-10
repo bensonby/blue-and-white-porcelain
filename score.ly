@@ -1,6 +1,6 @@
 \version "2.18.2"
 \include "articulate.ly"
-#(set-global-staff-size 14)
+#(set-global-staff-size 16)
 
 % collision for dynamics
 % write remarks or modify title for C major version
@@ -842,9 +842,9 @@ melody-original-key = \relative c' {
       \guitarchords
     }
     \new Staff = "melodystaff" \with {
-      fontSize = #-3
-      \override StaffSymbol.staff-space = #(magstep -3)
-      \override StaffSymbol.thickness = #(magstep -3)
+      % fontSize = #-3
+      % \override StaffSymbol.staff-space = #(magstep -3)
+      % \override StaffSymbol.thickness = #(magstep -3)
     }
     <<
       \set Staff.instrumentName = #"Solo"
@@ -874,7 +874,7 @@ melody-original-key = \relative c' {
     }
     \context {
       \ChordNames
-      \override ChordName #'font-size = #-1
+      % \override ChordName #'font-size = #-1
     }
   }
 }
@@ -888,9 +888,9 @@ melody-original-key = \relative c' {
       \guitarchords-original-key
     }
     \new Staff = "melodystaff" \with {
-      fontSize = #-3
-      \override StaffSymbol.staff-space = #(magstep -3)
-      \override StaffSymbol.thickness = #(magstep -3)
+      % fontSize = #-3
+      % \override StaffSymbol.staff-space = #(magstep -3)
+      % \override StaffSymbol.thickness = #(magstep -3)
     }
     <<
       \set Staff.instrumentName = #"Solo"
@@ -916,7 +916,7 @@ melody-original-key = \relative c' {
     }
     \context {
       \ChordNames
-      \override ChordName #'font-size = #-1
+      % \override ChordName #'font-size = #-1
     }
   }
 }
