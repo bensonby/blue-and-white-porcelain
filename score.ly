@@ -175,7 +175,7 @@ upper-chorus-two = \relative c'' {
   } \\ {
     s1
     \stemDown
-    r16 g,^\( a c d c d e
+    r16 g,_\( a c d c d e
     <f g,>8 e <d g,> c
     \stemUp
     a4.\)^\( e'8 d4.\)
@@ -345,7 +345,7 @@ lower-verse-two = \relative c {
     \cr c16 g'~ \stemDown g8 d
     \stemNeutral
     \cl c,16 g'
-    \cr d'16 g~ \stemDown g d c d
+    \cr d'16 g_~ \stemDown g d c d
     \stemDown
     \cl e,16
     b'16 d g~ g8 b,
