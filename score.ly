@@ -928,7 +928,7 @@ melody-original-key = \relative c' {
       \set Staff.midiMinimumVolume = #0.9
       \set Staff.midiMaximumVolume = #1
       \new Voice = "melody" {
-        \melody
+        \melody-original-key
       }
       \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
     >>
