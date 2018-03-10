@@ -1,9 +1,8 @@
 \version "2.18.2"
 \include "articulate.ly"
-#(set-global-staff-size 15)
+#(set-global-staff-size 14)
 
 % collision for dynamics
-% add chords for guitar
 % write remarks or modify title for C major version
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -594,7 +593,59 @@ dynamics = {
 }
 
 guitarchords = \chordmode {
-  % ais1:m
+  \partial 16*6
+  s8 s4
+  f2 c/e d:m7 c a:m7 d:7 g:11 g
+  % verse 1
+  c2 c:sus2 a1:m7 f:maj9 g2:sus4/d g
+  c1:sus2 e2:m7 a:m7 f:maj9 g:sus4/d c:sus2 c4:sus4/g c:sus2/e
+  % chorus 1
+  f2 g:7/f e:m7 a:m d:m9 g:7sus2
+  c2 c4:sus4 c:sus2/e
+  f2 g:7/f e:m7 a:m d:m9 g:7sus2 c:sus2 c
+  % episode
+  f2:6 f:m6 c:sus2/e ees:dim7 d1:9 g2:sus4 g
+  % verse 2
+  c2 c4.:sus2 g8/b a1:m7 f:maj9 g2:sus4/d g
+  c1:sus2 e2:m7 a:m7 f:maj9 g:sus4/d c:sus2 c4:sus4/g c:sus2/e
+  % chorus 2
+  f2 g:7/f e:m7 a:m d:m9 g:7sus2
+  c2 c4:sus4 c:sus2/e
+  f2 g:7/f e:m7 a:m d:m9 g:7sus2 c:sus2 g4:m7 c/e
+  % chorus 3
+  f2 g:7/f e:m7 a:m d:m9 g:7sus2
+  c2 c4:sus4 c:sus2/e
+  f2 g:7/f e:m7 a:m d:m9 g:7sus2
+  % outro
+  c1:sus2 f:sus2 a:m7 f:sus2
+}
+
+guitarchords-original-key = \chordmode {
+  \partial 16*6
+  s8 s4
+  d2 a/cis b:m7 a fis:m7 b:7 e:11 e
+  % verse 1
+  a2 a:sus2 fis1:m7 d:maj9 e2:sus4/b e
+  a1:sus2 cis2:m7 fis:m7 d:maj9 e:sus4/b a:sus2 a4:sus4/e a:sus2/cis
+  % chorus 1
+  d2 e:7/d cis:m7 fis:m b:m9 e:7sus2
+  a2 a4:sus4 a:sus2/cis
+  d2 e:7/d cis:m7 fis:m b:m9 e:7sus2 a:sus2 a
+  % episode
+  d2:6 d:m6 a:sus2/cis c:dim7 b1:9 e2:sus4 e
+  % verse 2
+  a2 a4.:sus2 e8/gis fis1:m7 d:maj9 e2:sus4/b e
+  a1:sus2 cis2:m7 fis:m7 d:maj9 e:sus4/b a:sus2 a4:sus4/e a:sus2/cis
+  % chorus 2
+  d2 e:7/d cis:m7 fis:m b:m9 e:7sus2
+  a2 a4:sus4 a:sus2/cis
+  d2 e:7/d cis:m7 fis:m b:m9 e:7sus2 a:sus2 f4:m7 bes/d
+  % chorus 3
+  ees2 f:7/ees d:m7 g:m c:m9 f:7sus2
+  bes2 bes4:sus4 bes:sus2/d
+  ees2 f:7/ees d:m7 g:m c:m9 f:7sus2
+  % outro
+  bes1:sus2 ees:sus2 g:m7 ees:sus2
 }
 
 lyricsmain = \lyricmode {
@@ -729,9 +780,6 @@ melody-original-key = \relative c' {
 \book {
 \score {
   <<
-    % \new ChordNames {
-      % \guitarchords
-    % }
     \new Staff = "melodystaff" <<
       \set Staff.midiInstrument = #"electric guitar (clean)"
       \set Staff.instrumentName = #"Ocarina"
@@ -747,20 +795,17 @@ melody-original-key = \relative c' {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \upper-c-major \pedals >>
+        \articulate << \keepWithTag #'c-major \upper-c-major \pedals >>
       }
       \new Staff = "left" {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \lower-c-major \pedals >>
+        \articulate << \keepWithTag #'c-major \lower-c-major \pedals >>
       }
     >>
   >>
   \midi {
-    \context {
-      \ChordNameVoice \remove Note_performer
-    }
   }
 }
 }
@@ -769,28 +814,22 @@ melody-original-key = \relative c' {
 \bookOutputSuffix "c-major-no-vocal"
 \score {
   <<
-    % \new ChordNames {
-      % \guitarchords
-    % }
     \new PianoStaff <<
       \new Staff = "right" {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \upper-c-major \pedals >>
+        \articulate << \keepWithTag #'c-major \upper-c-major \pedals >>
       }
       \new Staff = "left" {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \lower-c-major \pedals >>
+        \articulate << \keepWithTag #'c-major \lower-c-major \pedals >>
       }
     >>
   >>
   \midi {
-    \context {
-      \ChordNameVoice \remove Note_performer
-    }
   }
 }
 }
@@ -799,10 +838,9 @@ melody-original-key = \relative c' {
 \bookOutputSuffix "c-major"
 \score {
   <<
-    % \new ChordNames {
-      % \set chordChanges = ##t
-      % \guitarchords
-    % }
+    \new ChordNames {
+      \guitarchords
+    }
     \new Staff = "melodystaff" \with {
       fontSize = #-3
       \override StaffSymbol.staff-space = #(magstep -3)
@@ -823,6 +861,10 @@ melody-original-key = \relative c' {
     >>
   >>
   \layout {
+    % \context {
+      % add the RemoveEmptyStaffContext that erases rest-only staves
+      % \Staff \RemoveEmptyStaves
+    % }
     \context {
       \Score
       % Remove all-rest staves also in the first system
@@ -832,7 +874,7 @@ melody-original-key = \relative c' {
     }
     \context {
       \ChordNames
-      \override ChordName #'font-size = #-3
+      \override ChordName #'font-size = #-1
     }
   }
 }
@@ -842,10 +884,9 @@ melody-original-key = \relative c' {
 \bookOutputSuffix "original-key"
 \score {
   <<
-    % \new ChordNames {
-      % \set chordChanges = ##t
-      % \guitarchords
-    % }
+    \new ChordNames {
+      \guitarchords-original-key
+    }
     \new Staff = "melodystaff" \with {
       fontSize = #-3
       \override StaffSymbol.staff-space = #(magstep -3)
@@ -875,8 +916,38 @@ melody-original-key = \relative c' {
     }
     \context {
       \ChordNames
-      \override ChordName #'font-size = #-3
+      \override ChordName #'font-size = #-1
     }
+  }
+}
+\score {
+  <<
+    \new Staff = "melodystaff" <<
+      \set Staff.midiInstrument = #"electric guitar (clean)"
+      \set Staff.instrumentName = #"Ocarina"
+      \set Staff.midiMinimumVolume = #0.9
+      \set Staff.midiMaximumVolume = #1
+      \new Voice = "melody" {
+        \melody
+      }
+      \context Lyrics = "lyrics" { \lyricsto "melody" { \lyricsmain } }
+    >>
+    \new PianoStaff <<
+      \new Staff = "right" {
+        \set Staff.midiInstrument = #"acoustic grand"
+        \set Staff.midiMinimumVolume = #0.6
+        \set Staff.midiMaximumVolume = #0.7
+        \articulate << \keepWithTag #'original \upper-original-key \pedals >>
+      }
+      \new Staff = "left" {
+        \set Staff.midiInstrument = #"acoustic grand"
+        \set Staff.midiMinimumVolume = #0.6
+        \set Staff.midiMaximumVolume = #0.7
+        \articulate << \keepWithTag #'original \lower-original-key \pedals >>
+      }
+    >>
+  >>
+  \midi {
   }
 }
 }
