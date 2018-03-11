@@ -3,7 +3,6 @@
 #(set-global-staff-size 16)
 
 % collision for dynamics
-% write remarks or modify title for C major version
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  http://lsr.di.unimi.it/LSR/Item?id=445
@@ -52,13 +51,6 @@ lhMark = \markup {
 \paper {
   oddFooterMarkup = \markup { \fill-line { "https://music.bensonby.me" }}
   evenFooterMarkup = \markup { \fill-line { "https://music.bensonby.me" }}
-}
-
-\header {
-  title = "周杰倫 - 青花瓷"
-  subtitle = "鋼琴伴奏版"
-  arranger = "Arranged by Benson"
-  composer = "Composed by Jay Chou"
 }
 
 upper-prelude = \relative c''' {
@@ -836,6 +828,12 @@ melody-original-key = \relative c' {
 
 \book {
 \bookOutputSuffix "c-major"
+\header {
+  title = "周杰倫 - 青花瓷"
+  subtitle = "鋼琴伴奏版 (C major, 沒有轉調)"
+  arranger = "Arranged by Benson"
+  composer = "Composed by Jay Chou"
+}
 \score {
   <<
     \new ChordNames {
@@ -882,6 +880,13 @@ melody-original-key = \relative c' {
 
 \book {
 \bookOutputSuffix "original-key"
+\header {
+  title = "周杰倫 - 青花瓷"
+  subtitle = "鋼琴伴奏版"
+  arranger = "Arranged by Benson"
+  composer = "Composed by Jay Chou"
+}
+
 \score {
   <<
     \new ChordNames {
