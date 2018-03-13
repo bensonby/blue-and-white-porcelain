@@ -73,7 +73,7 @@ lhMark = \markup {
 upper-prelude = \relative c''' {
   s16 \acciaccatura g a\( g e d e d c a8~ a8 d16 e d c g8~ g d'16 e d c a8 c16 d8 a16 e'4\)
   \makeOctaves 1 { c16\( d e g g e e8 d c } <d fis d'>16 \makeOctaves 1 { c a8 c16 d e8 }
-  <g g'>2~\startTrillSpan\finger \markup \tied-lyric #"45-13" g'4\stopTrillSpan\) r4
+  <g g'>2~\startTrillSpan\finger \markup \tied-lyric #"54-13" g'4\stopTrillSpan\) r4
 }
 
 lower-prelude = \relative c {
