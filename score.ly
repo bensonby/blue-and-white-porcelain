@@ -2,7 +2,24 @@
 \include "articulate.ly"
 #(set-global-staff-size 16)
 
-% collision for dynamics
+%% http://lsr.di.unimi.it/LSR/Item?id=469
+%% see also http://lilypond.org/doc/v2.18/Documentation/learning/moving-objects
+
+%LSR This snippet was contributed by Risto Vääräniemi
+
+dynamicsX =
+#(define-music-function (parser location offset)(number?)
+  #{
+     \once \override DynamicText.X-offset = $offset
+     \once \override DynamicLineSpanner.Y-offset = #0
+  #})
+
+dynamicsXY =
+#(define-music-function (parser location offsetX offsetY)(number? number?)
+  #{
+     \once \override DynamicText.X-offset = $offsetX
+     \once \override DynamicLineSpanner.Y-offset = $offsetY
+  #})
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  http://lsr.di.unimi.it/LSR/Item?id=445
@@ -578,10 +595,20 @@ lower-original-key = \relative c {
 dynamics = {
   \partial 16*6
   s16 s\mp s4 s1*11
-  s2 s2\mf s1*3 s16 s8.\< s4 s2\! s1\mf s1*7
+  s2 s2\mf s1*3
+  s16 s8.\< s8. s16\! s4 s8\> s8\!
+  s1 s1*7
   % second verse
-  s1\mp s1*3 s1\mf s1*6 s16 s8.\< s4 s2\! s1\mf s1*2
-  s2 s2\< s1\!\f s1*9 s1_\markup { \italic "rit." }
+  s1\mp s1*3
+  \dynamicsXY #0 #3 s1\mf
+  s1*6
+  s16 s8.\< s8. s16\! s4 s8\> s8\!
+  s1 s1*2
+  s2
+  \crescTextCresc
+  s4..\< s16\!
+  \dynamicsXY #0 #0
+  s1 s1*9 s1_\markup { \italic "rit." }
 }
 
 guitarchords = \chordmode {
