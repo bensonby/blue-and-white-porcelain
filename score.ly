@@ -73,7 +73,16 @@ lhMark = \markup {
 upper-prelude = \relative c''' {
   s16 \acciaccatura g a\( g e d e d c a8~ a8 d16 e d c g8~ g d'16 e d c a8 c16 d8 a16 e'4\)
   \makeOctaves 1 { c16\( d e g g e e8 d c } <d fis d'>16 \makeOctaves 1 { c a8 c16 d e8 }
-  <g g'>2~\startTrillSpan\finger \markup \tied-lyric #"54-13" g'4\stopTrillSpan\) r4
+  \tag #'written {
+    <g g'>2~\startTrillSpan\finger \markup \tied-lyric #"54-13" g'4\stopTrillSpan\) r4
+  }
+  \tag #'midi {
+    <g, g'>64 a' g a g a g a
+    g a g a g a g a
+    g a g a g a g a
+    g a g a g a g a
+    g4\) r4
+  }
 }
 
 lower-prelude = \relative c {
@@ -265,7 +274,16 @@ upper-episode = \relative c'' {
     c8
   }
   d8 e a
-  g2~\)\startTrillSpan g4\stopTrillSpan r4
+  \tag #'written {
+    g2~\)\startTrillSpan g4\stopTrillSpan r4
+  }
+  \tag #'midi {
+    g64 a g a g a g a
+    g64 a g a g a g a
+    g64 a g a g a g a
+    g64 a g a g a g a
+    g4 r4
+  }
 }
 
 lower-episode = \relative c {
@@ -814,13 +832,13 @@ melody-original-key = \relative c' {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \keepWithTag #'c-major \upper-c-major \pedals >>
+        \articulate << \keepWithTag #'(c-major midi) \upper-c-major \pedals >>
       }
       \new Staff = "left" {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \keepWithTag #'c-major \lower-c-major \pedals >>
+        \articulate << \keepWithTag #'(c-major midi) \lower-c-major \pedals >>
       }
     >>
   >>
@@ -838,13 +856,13 @@ melody-original-key = \relative c' {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \keepWithTag #'c-major \upper-c-major \pedals >>
+        \articulate << \keepWithTag #'(c-major midi) \upper-c-major \pedals >>
       }
       \new Staff = "left" {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \keepWithTag #'c-major \lower-c-major \pedals >>
+        \articulate << \keepWithTag #'(c-major midi) \lower-c-major \pedals >>
       }
     >>
   >>
@@ -880,9 +898,9 @@ melody-original-key = \relative c' {
     >>
     \new PianoStaff <<
       \set PianoStaff.instrumentName = #"Piano"
-      \new Staff = "right" { \keepWithTag #'c-major \upper-c-major }
+      \new Staff = "right" { \keepWithTag #'(c-major written) \upper-c-major }
       \new Dynamics = "Dynamics_pf" \dynamics
-      \new Staff = "left" { \keepWithTag #'c-major \lower-c-major }
+      \new Staff = "left" { \keepWithTag #'(c-major written) \lower-c-major }
     >>
   >>
   \layout {
@@ -933,9 +951,9 @@ melody-original-key = \relative c' {
     >>
     \new PianoStaff <<
       \set PianoStaff.instrumentName = #"Piano"
-      \new Staff = "right" { \keepWithTag #'original \upper-original-key }
+      \new Staff = "right" { \keepWithTag #'(original written) \upper-original-key }
       \new Dynamics = "Dynamics_pf" \dynamics
-      \new Staff = "left" { \keepWithTag #'original \lower-original-key }
+      \new Staff = "left" { \keepWithTag #'(original written) \lower-original-key }
     >>
   >>
   \layout {
@@ -969,13 +987,13 @@ melody-original-key = \relative c' {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \keepWithTag #'original \upper-original-key \pedals >>
+        \articulate << \keepWithTag #'(original midi) \upper-original-key \pedals >>
       }
       \new Staff = "left" {
         \set Staff.midiInstrument = #"acoustic grand"
         \set Staff.midiMinimumVolume = #0.6
         \set Staff.midiMaximumVolume = #0.7
-        \articulate << \keepWithTag #'original \lower-original-key \pedals >>
+        \articulate << \keepWithTag #'(original midi) \lower-original-key \pedals >>
       }
     >>
   >>
