@@ -848,6 +848,30 @@ melody-original-key = \relative c' {
 }
 
 \book {
+\bookOutputSuffix "original-key-no-vocal"
+\score {
+  <<
+    \new PianoStaff <<
+      \new Staff = "right" {
+        \set Staff.midiInstrument = #"acoustic grand"
+        \set Staff.midiMinimumVolume = #0.6
+        \set Staff.midiMaximumVolume = #0.7
+        \articulate << \keepWithTag #'(original midi) \upper-original-key \pedals >>
+      }
+      \new Staff = "left" {
+        \set Staff.midiInstrument = #"acoustic grand"
+        \set Staff.midiMinimumVolume = #0.6
+        \set Staff.midiMaximumVolume = #0.7
+        \articulate << \keepWithTag #'(original midi) \lower-original-key \pedals >>
+      }
+    >>
+  >>
+  \midi {
+  }
+}
+}
+
+\book {
 \bookOutputSuffix "c-major-no-vocal"
 \score {
   <<
