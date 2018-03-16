@@ -735,47 +735,51 @@ lyricsmain = \lyricmode {
 }
 
 melody-verse = \relative c'' {
-  r16 d c a c8 c16 a c8 c16 a c a g8
-  r16 d' c a c8 c16 a c8 c16 e d c c8
-  r16 g a e' e8 e16 d e8 e16 d e g8 e16
-  r16 e e e d d d d d8 c16 e~( e d8.)
-  r16 d c a c8 c16 a c8 c16 a c a g8
-  r16 g a e' g8 g16 e g8 g16 e d c c8
-  r16 d c d e d d( c) d r c a d c c a c8 c16 c~ c4 r4 r4
+  r16 d\( c a c8 c16 a c8 c16 a c a g8\)
+  r16 d'\( c a c8 c16 a c8 c16 e d c c8\)
+  r16 g\( a e' e8 e16 d e8 e16 d e g8 e16\)
+  r16
+  \shape #'((0 . 0) (0 . 0) (0 . -1) (0 . 0) (0 . 0) (0 . 0) (0 . 0) (0 . 0)) PhrasingSlur
+  e^\( e e d d d d d8 c16 e_~^( e d8.)\)
+  r16 d\( c a c8 c16 a c8 c16 a c a g8\)
+  r16 g\( a e' g8 g16 e g8 g16 e d c c8\)
+  r16 d\( c d e d d( c) d\) r c\( a d c c a c8 c16 c~ c4\) r4 r4
 }
 
 melody-verse-two = \relative c'' {
-  r16 d c a c8 c16 a c8 c16 a c a g8
-  r16 d' c a c8 c16 a c8 c16 e d c c8
-  r16 g a e' e8 e16 d d( e) e16 d e g8 e16
-  r16 e e e d d d d d8 c16 e~( e d8.)
-  r16 d c a c8 c16 a c8 c16 a c a g8
-  r16 g a e' g8 g16 e g8 g16 e d c c8
-  r16 d c d e d d( c) d r c a d c c a c8 c16 d~( d c8.) r4 r4
+  r16 d\( c a c8 c16 a c8 c16 a c a g8\)
+  r16 d'\( c a c8 c16 a c8 c16 e d c c8\)
+  r16 g\( a e' e8 e16 d d( e) e16 d e g8 e16\)
+  r16
+  \shape #'((0 . 0) (0 . 0) (0 . -1) (0 . 0) (0 . 0) (0 . 0) (0 . 0) (0 . 0)) PhrasingSlur
+  e^\( e e d d d d d8 c16 e_~^( e d8.)\)
+  r16 d\( c a c8 c16 a c8 c16 a c a g8\)
+  r16 g\( a e' g8 g16 e g8 g16 e d c c8\)
+  r16 d\( c d e d d( c) d\) r c\( a d c c a c8 c16 d~( d c8.)\) r4 r4
 }
 
 melody-chorus = \relative c''' {
-  r16 g16 g e d e a,8 d16 e g e d4
-  r16 g g e d e g,8 d'16 e g d c4
-  r16 c d e g a g e g e e d d4
-  r16 c d c d8 c16 d~ d16 e8 g16~ g e8.
-  r16 g16 g e d e a,8 d16 e g e d4
-  r16 g g e d e g,8 d'16 e g d c4
-  r16 c d e g a g e g e e d d8 r16
-  g,16 e'8 d16 d~ d c8.~ c4 r4
+  r16 g16\( g e d e a,8\) d16\( e g e d4\)
+  r16 g\( g e d e g,8\) d'16\( e g d c4\)
+  r16 c\( d e g a g e g e e d d4\)
+  r16 c\( d c d8 c16 d~ d16 e8 g16~ g e8.\)
+  r16 g16\( g e d e a,8\) d16\( e g e d4\)
+  r16 g\( g e d e g,8\) d'16\( e g d c4\)
+  r16 c\( d e g a g e g e e d d8\) r16
+  g,16\( e'8 d16 d~ d c8.~ c4\) r4
 }
 
 melody-chorus-two = \relative c''' {
-  r16 g16 g e
+  r16 g16\( g e
   \key c \major
-  d e a,8 d16 e g e d4
-  r16 g g e d e g,8 d'16 e g d c4
-  r16 c d e g a g e g e e d d4
-  r16 c d c d8 c16 d~ d16 e8 g16~ g e8.
-  r16 g16 g e d e a,8 d16 e g e~ e d8.
-  r16 g g e d e g,8 d'16 e g d~ d c8.
-  r16 c d e g a g e g e e d d8 r16
-  g,16 e'8 d16 d~ d c8.~ c4 r2
+  d e a,8\) d16\( e g e d4\)
+  r16 g\( g e d e g,8\) d'16\( e g d c4\)
+  r16 c\( d e g a g e g e e d d4\)
+  r16 c\( d c d8 c16 d~ d16 e8 g16~ g e8.\)
+  r16 g16\( g e d e a,8\) d16\( e g e~ e d8.\)
+  r16 g\( g e d e g,8\) d'16\( e g d~ d c8.\)
+  r16 c\( d e g a g e g e e d d8\) r16
+  g,16\( e'8 d16 d~ d c8.~ c4\) r2
 }
 
 melody = \relative c' {
@@ -783,6 +787,7 @@ melody = \relative c' {
   \time 4/4
   \key c \major
   \partial 16*6
+  \phrasingSlurUp
   s16 r16 r4 R1 R1 R1 r2 r4
   \melody-verse
   \melody-chorus
@@ -799,6 +804,7 @@ melody-original-key = \relative c' {
   \time 4/4
   \key a \major
   \partial 16*6
+  \phrasingSlurUp
   s16 r16 r4 R1 R1 R1 r2 r4
   \transpose c a, {
     \melody-verse
