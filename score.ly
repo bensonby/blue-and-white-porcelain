@@ -477,7 +477,7 @@ lower-chorus-last = \relative c {
     f,16 c' f g~ g4
     a,,16 g' c e~ e4
     a,,16 g' c e~ e4
-    f,16 c' f g~ g4
+    f,16 c' f g~ g2.
   } \\ {
     f,4. c8 f2
     e4. e16 b a2
